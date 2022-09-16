@@ -9,8 +9,8 @@ from walrus import *
 def redis_store(count):
     db=Database(host='localhost',port=6379,db=0)
     h = db.List("activation_code")
-    for i in range(count):
-        s = str(uuid.uuid4().get_hex().lower()[0:8])
+    for _ in range(count):
+        s = str(uuid.uuid4().get_hex().lower()[:8])
         h.extend([s])
 
 if __name__ == '__main__':

@@ -27,9 +27,9 @@ def stat(the_file):
             print('This file has ', word_list.__len__(), ' words.')
             word_set_list = sorted(set(word_list))
             for each_word in word_set_list:
-                print(each_word + ' : ', word_list.count(each_word))
+                print(f'{each_word} : ', word_list.count(each_word))
     except IOError as err:
-        print('File error: ' + str(err))
+        print(f'File error: {str(err)}')
 
 if __name__ == '__main__':
     stat(file_name)

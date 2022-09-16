@@ -16,17 +16,16 @@ def calfile(path,filename):
 	totline = 0
 	blankline = 0
 	commentline = 0
-	fileobj = open(path + filename,'r')
-	linelist = fileobj.readlines()
-	totline = len(linelist)
-	for line in linelist:
-		pattern = re.compile(r'(\s*)#')
-		pattern1 = re.compile(r'(\s*)$')
-		if pattern.match(line):
-			commentline += 1
-		if pattern1.match(line):
-			blankline += 1
-	fileobj.close()
+	with open(path + filename,'r') as fileobj:
+		linelist = fileobj.readlines()
+		totline = len(linelist)
+		for line in linelist:
+			pattern = re.compile(r'(\s*)#')
+			pattern1 = re.compile(r'(\s*)$')
+			if pattern.match(line):
+				commentline += 1
+			if pattern1.match(line):
+				blankline += 1
 	return totline,blankline,commentline
 
 #path = r'/home/evan/Desktop/py/python/evan69/0007/'

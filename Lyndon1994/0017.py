@@ -19,12 +19,13 @@
 </students>
 </root>
 """
+
 import xlwt, json
 from collections import OrderedDict
 
 with open('source/0014/student.txt', 'r') as f:
-    L = []
-    L.append(r"""
+    L = [
+        """
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
 <students>
@@ -32,11 +33,13 @@ with open('source/0014/student.txt', 'r') as f:
 	学生信息表
 	"id" : [名字, 数学, 语文, 英文]
 -->
-    """)
-    L.append(f.read())
-    L.append(r"""
+    """,
+        f.read(),
+        """
 </students>
 </root>
-    """)
+    """,
+    ]
+
     with open('source/0014/student.xml', 'w') as s:
         s.write(''.join(L))

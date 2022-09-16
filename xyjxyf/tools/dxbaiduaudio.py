@@ -57,12 +57,13 @@ def wav_to_text(wav_path):
 
     if len(bda_access_token) == 0:
         get_access_token()
-        if len(bda_access_token) == 0:
-            return None
+    if len(bda_access_token) == 0:
+        return None
 
     data, f_len = get_wav_data(wav_path)
 
-    url = 'http://vop.baidu.com/server_api?cuid=' + get_mac_address() + '&token=' + bda_access_token
+    url = f'http://vop.baidu.com/server_api?cuid={get_mac_address()}&token={bda_access_token}'
+
     http_header = [
         'Content-Type: audio/pcm; rate=8000',
         'Content-Length: %d' % f_len

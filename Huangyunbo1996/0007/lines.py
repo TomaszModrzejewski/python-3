@@ -14,17 +14,16 @@ def CountLines(countDir,ext,ignore):
     for file in os.listdir(countDir):
         if os.path.isdir(os.path.join(countDir,file)) and file != ignore:
             CountLines(os.path.join(countDir,file),ext,ignore)
-        else:
-            if os.path.splitext(file)[1].strip('.') == ext:
-                print(file)
-                with open(os.path.join(countDir,file),'r',encoding='utf-8') as f:
-                    for line in f:
-                        if line.strip().startswith('#'):
-                            commentLines = commentLines + 1
-                        elif line.strip() == '':
-                            blankLines = blankLines + 1
-                        else:
-                            codeLines = codeLines + 1
+        elif os.path.splitext(file)[1].strip('.') == ext:
+            print(file)
+            with open(os.path.join(countDir,file),'r',encoding='utf-8') as f:
+                for line in f:
+                    if line.strip().startswith('#'):
+                        commentLines = commentLines + 1
+                    elif line.strip() == '':
+                        blankLines = blankLines + 1
+                    else:
+                        codeLines = codeLines + 1
     
     
 

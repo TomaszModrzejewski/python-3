@@ -11,7 +11,7 @@ def gen_xml(root, child, comment, data):
     node_students.appendChild(doc.createTextNode(data))
     node_root.appendChild(node_students)
     doc.appendChild(node_root)
-    filename = child + '.xml'
+    filename = f'{child}.xml'
     with open(filename, 'w', encoding='utf-8') as f:
         doc.writexml(f, newl='\n')
 
@@ -20,10 +20,8 @@ def xls_to_xml(filename, comment):
     file = xlrd.open_workbook(filename)
     table = file.sheet_by_name(filename.split('.')[0])
     row = table.nrows
-    data = dict()
-    for i in range(row):
-        data[str(i+1)] = table.row_values(i)[1:]
-    print(str(data))
+    data = {str(i+1): table.row_values(i)[1:] for i in range(row)}
+    print(data)
     gen_xml('root', 'students', comment, str(data))
 
 # comment = "学生信息表'id' : [名字, 数学, 语文, 英文]"

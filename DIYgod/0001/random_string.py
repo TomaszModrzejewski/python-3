@@ -4,12 +4,11 @@
 import random, string
 
 def rand_str(num, length = 7):
-    f = open('Activation_code.txt', 'wb')
-    for i in range(num):
-        chars = string.letters + string.digits
-        s = [random.choice(chars) for i in range(length)]
-        f.write(''.join(s) + '\n')
-    f.close()
+    with open('Activation_code.txt', 'wb') as f:
+        for _ in range(num):
+            chars = string.letters + string.digits
+            s = [random.choice(chars) for _ in range(length)]
+            f.write(''.join(s) + '\n')
 
 if __name__ == '__main__':
     rand_str(200)

@@ -20,7 +20,7 @@ import uuid
 
 def create_activation_code(num=200):
     codes = []
-    for i in range(num):
+    for _ in range(num):
         code = str(uuid.uuid1())
         code = code.replace('-', '')
         codes.append(code)
@@ -46,7 +46,7 @@ def save_activation_code_to_mysql():
 
     cur.execute("SELETE * FROM codes")
     data = cur.fetchall()
-    print("data:%s" % data)
+    print(f"data:{data}")
 
     cur.close()
     conn.close()
@@ -62,26 +62,22 @@ def save_activation_code_to_redis():
     for code in codes:
         re.lpop('codes', code)
 
-    print("data:%s" % re.get('codes'))
+    print(f"data:{re.get('codes')}")
 
 
 # 第 0004 题：任一个英文的纯文本文件，统计其中的单词出现的个数。
 import re
 
 def number_of_words(file_path=None):
-    num = 0
-
     if file_path is None:
-        return num
+        return 0
 
     file = open(file_path, 'r')
     content = file.read()
-    content = " " + content
+    content = f" {content}"
     pattern = re.compile(u'\s+\w+')
     match = pattern.findall(content)
-    num = len(match)
-
-    return num
+    return len(match)
 
 
 # 第 0005 题：你有一个目录，装了很多照片，把它们的尺寸变成都不大于 iPhone5 分辨率的大小。
@@ -121,7 +117,7 @@ def get_most_important_word(dir_path=None):
             words = content.split()
             word_dic = {}
             for word in words:
-                if word in word_dic.keys():
+                if word in word_dic:
                     word_dic[word] += 1
                 else:
                     word_dic[word] = 1
@@ -164,8 +160,8 @@ def lines_of_codes(dir_path=None):
                     if match_note is not None:
                         mut_note = None
                         match_note = re.match("\/\*|\"\"\"|\'\'\'", line)
-                        if match_note is not None:
-                            mut_note = line[match_note.pos:(match_note.endpos - 1)]
+                    if match_note is not None:
+                        mut_note = line[match_note.pos:(match_note.endpos - 1)]
 
                     continue
                 else:
@@ -180,8 +176,6 @@ def lines_of_codes(dir_path=None):
                 if match_note1 is not None:
                     note_num += 1
                     continue
-
-                pass
 
             code_num += count + 1
 
@@ -202,10 +196,9 @@ def get_html_context(url=None):
 
     soup.prettify()
     reg = re.compile("<[^>]*>")
-    ret_content = reg.sub('', soup.prettify())
     # print(ret_content)
 
-    return ret_content
+    return reg.sub('', soup.prettify())
 
 
 # 第 0009 题：一个HTML文件，找出里面的链接
@@ -221,9 +214,7 @@ def get_html_links(url=None):
     dxparser = dxhtmlparser.DXHTMLParser('a', 'href', url)
     dxparser.feed(content)
 
-    links = dxparser.getrets()
-
-    return links
+    return dxparser.getrets()
 
 # 第 0010 题：使用 Python 生成字母验证码图片
 def create_verification_code():
@@ -318,7 +309,7 @@ def dictxt_to_xls(file_path=None):
              ws.write(row, col, value)
         row += 1
 
-    save_path = path + "/" + file_name + ".xls"
+    save_path = f"{path}/{file_name}.xls"
     wb.save(save_path)
 
 
@@ -340,13 +331,10 @@ def listtxt_to_xls(file_path=None):
     ws = wb.add_sheet(file_name)
 
     for i in range(len(content)):
-        col = 0
         list = content[i]
-        for value in list:
+        for col, _ in enumerate(list):
             ws.write(i, col, content[i][col])
-            col += 1
-
-    save_path = path + "/" + file_name + ".xls"
+    save_path = f"{path}/{file_name}.xls"
     wb.save(save_path)
 
 # pip3 install xlrd
@@ -393,10 +381,8 @@ def write_student_to_xml(dic=None, to_path=None):
     dic_node = doc.createTextNode(stringer.dict_to_json(dic, "\t\t"))
     stu_node.appendChild(dic_node)
 
-    file = open(to_path, "w")
-    file.write(doc.toprettyxml())
-    # doc.writexml(file,'    ','    ','\n','utf-8')
-    file.close()
+    with open(to_path, "w") as file:
+        file.write(doc.toprettyxml())
 
 # 第 0018 题： 将 第 0015 题中的 city.xls 文件中的内容写到 city.xml 文件中
 # 使用lxml
@@ -478,12 +464,8 @@ def statistics_month_time():
             sum = sum + (len(tmp) - 1 - j) * 60 * int(tmp[j])
             j = j - 1
 
-        if ym_str in dic:
-            dic[ym_str] = dic[ym_str] + int(sum)
-        else:
-            dic[ym_str] = int(sum)
-
-        # i = i + 1
+        dic[ym_str] = dic[ym_str] + int(sum) if ym_str in dic else int(sum)
+            # i = i + 1
 
     return dic
 
@@ -500,7 +482,7 @@ def encrypt_password(password, salt=None):
         password = password.encode('UTF-8')
 
     ret = password
-    for i in range(10):
+    for _ in range(10):
         ret = HMAC(ret, salt, sha256).digest()
 
     return salt + ret

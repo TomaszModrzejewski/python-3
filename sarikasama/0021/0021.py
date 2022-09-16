@@ -9,7 +9,7 @@ def encrypt_passwd(password, salt=None):
         password = password.encode('utf-8')
 
     result = password
-    for i in range(10):
+    for _ in range(10):
         result =  hmac.HMAC(result, salt, hashlib.sha256).digest()
     return salt+result
     

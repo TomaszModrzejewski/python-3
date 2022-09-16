@@ -7,12 +7,7 @@ def createSN(count):
         return
 
 
-    sns=[]
-
-    for i in range(count):
-        sns.append(uuid.uuid4().hex.upper())
-
-    return sns
+    return [uuid.uuid4().hex.upper() for _ in range(count)]
 
 def createSNAndSaveToFile(count, filepath):
     sns = createSN(count)

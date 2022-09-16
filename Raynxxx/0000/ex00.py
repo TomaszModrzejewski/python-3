@@ -21,7 +21,7 @@ class UnreadTagFace:
         px = self.img.size[0] - font.getsize(tag_str)[0]
         draw_pen = ImageDraw.Draw(self.img)
         draw_pen.text((px, 0), tag_str, (255, 0, 0), font)
-        self.img.save('face' + tag_str + '.jpg')
+        self.img.save(f'face{tag_str}.jpg')
         return True
 
 

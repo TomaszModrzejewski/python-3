@@ -6,12 +6,7 @@ __author__ = 'jinyang'
 
 def readFile(filePath):
     file = open(filePath, 'r')
-    words = []
-    for word in file.readlines():
-#        print word.strip('\n')
-        words.append(word.strip('\n'))
-
-    return words
+    return [word.strip('\n') for word in file]
 
 def check(testWord):
     realWords = readFile('filtered_words.txt')

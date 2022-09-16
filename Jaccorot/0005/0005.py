@@ -30,7 +30,7 @@ def walk_dir_and_resize(path):
         for f_name in files:
             if f_name.lower().endswith('jpg'):
                 path_dst = os.path.join(root,f_name)
-                f_new_name = 'iPhone5_' + f_name
+                f_new_name = f'iPhone5_{f_name}'
                 resize_iPhone5_pic(path=path_dst, new_path=f_new_name)
 
 if __name__ == '__main__':

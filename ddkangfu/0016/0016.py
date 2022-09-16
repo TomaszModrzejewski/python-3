@@ -22,8 +22,7 @@ import xlwt
 
 def load_json_file(file_name):
     f = file(file_name)
-    json_data = json.load(f)
-    return json_data
+    return json.load(f)
 
 
 def save_as_xls(file_name, data):
@@ -32,19 +31,13 @@ def save_as_xls(file_name, data):
     file_names = os.path.splitext(os.path.basename(file_name))
     table = excel.add_sheet(file_names[0])
 
-    row = 0
-
-    for item in data:
+    for row, item in enumerate(data):
         table.write(row, 0, item[0])
         table.write(row, 1, item[1])
         table.write(row, 2, item[2])
-        row += 1
-
     excel.save(file_name)
 
 
 if __name__ == '__main__':
-    data = load_json_file("numbers.txt")
-
-    if data:
+    if data := load_json_file("numbers.txt"):
         save_as_xls('numbers.xls', data)

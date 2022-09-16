@@ -41,13 +41,11 @@ def main():
 	html = urllib2.urlopen('http://tieba.baidu.com/p/2166231880')
 	content = html.read()
 	print(dehtml(content))
-	i = 0
-	for img_list in dehtml(content):
+	for i, img_list in enumerate(dehtml(content)):
 		img_content = urllib2.urlopen(img_list).read()
-		path_name = str(i)+'.jpg'
+		path_name = f'{str(i)}.jpg'
 		with open(path_name,'wb') as f:
 			f.write(img_content)
-		i+=1
 
 if __name__ == '__main__':
 	main()

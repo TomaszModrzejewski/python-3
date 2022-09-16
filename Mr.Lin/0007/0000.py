@@ -22,7 +22,7 @@ class Image_unread_message:
 		draw=ImageDraw.Draw(self.im)
 		draw.text(position,str,fill=colour,font=fnt)
 		self.im.show()
-		self.im.save(str+'num'+'.jpg')
+		self.im.save(f'{str}num.jpg')
 		return True
 
 

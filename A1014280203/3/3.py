@@ -15,7 +15,7 @@ def parse_coupon(c_code):
 def upload_to_database():
     session = make_connect()
     with open('coupon.txt', 'r') as file:
-        for line in file.readlines():
+        for line in file:
             c_id = re.findall(r'.*/.*:(.*)\'', str(parse_coupon(line)))
             session.set(c_id.pop(), line.strip())
 

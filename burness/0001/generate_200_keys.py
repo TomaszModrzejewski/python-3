@@ -6,7 +6,7 @@ class generate_N_keys:
 		self.list=[]
 
 	def generate(self,Num):
-		for i in range(Num):
+		for _ in range(Num):
 			self.list.append(uuid.uuid1())
 
 	def return_list(self):

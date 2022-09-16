@@ -11,12 +11,9 @@ link = 'http://tieba.baidu.com/p/2166231880'
 def crawler(link):
     html = get_html(link)
     (piclinks, filename) = get_pic_link(html)
-    print piclinks
-    #download
-    i = 0
-    for link in piclinks[:]:
+    html = get_html(link)
+    for i, link in enumerate(piclinks[:]):
         download(link, filename + str(i) + '.jpg')
-        i += 1
         #time.sleep(10)
 
 def get_html(link):

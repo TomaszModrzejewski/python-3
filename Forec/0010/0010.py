@@ -62,7 +62,7 @@ def make( strs, width = 400, height = 200):
     for x in range(width):
         for y in range(height):
             col = im.getpixel((x,y))
-            if col == (255,255,255) or col == (0,0,0):
+            if col in [(255, 255, 255), (0, 0, 0)]:
                 draw.point((x,y), fill = random_col())
     im = im.filter(ImageFilter.BLUR)
     # im.show()

@@ -20,10 +20,7 @@ content = '<?xml version="1.0" encoding="UTF-8"?>\n<root>\n<students>\n<!--\n   
 
 for row in range(rows):
     stu = table.row_values(row)
-    list = []
-    for x in range(len(stu)-1):
-        list.append(stu[x+1])
-        # print(isinstance(stu[x+1],unicode)) # 判断是否是unicode编码
+    list = [stu[x+1] for x in range(len(stu)-1)]
     dic[stu[0]] = list
 
 s = json.dumps(dic, indent=4, ensure_ascii=False)

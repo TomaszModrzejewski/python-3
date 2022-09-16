@@ -8,12 +8,11 @@ __author__ = 'Drake-Z'
 import random
 
 def randChar(filename, digit=4, num=200):
-    f = open(filename, 'a')
-    for i in range(0, num):     
-        for m in range(0, digit):
-            f.write(chr(random.randint(65, 90)))
-        f.write('\n')
-    f.close()
+    with open(filename, 'a') as f:
+        for _ in range(num):
+            for _ in range(digit):
+                f.write(chr(random.randint(65, 90)))
+            f.write('\n')
     print('Done!')
     return 0
 

@@ -13,14 +13,12 @@ import sys
 
 
 def word_count(file_path):
-    file_object = open(file_path, 'r')
+    with open(file_path, 'r') as file_object:
+        word_num = 0
+        for line in file_object:
+            line_list = line.split()
+            word_num += len(line_list)
 
-    word_num = 0
-    for line in file_object:
-        line_list = line.split()
-        word_num += len(line_list)
-
-    file_object.close()
     return word_num
 
 if __name__ == "__main__":
@@ -32,5 +30,4 @@ if __name__ == "__main__":
                 print("The total number of words is ", word_count(infile))
             except IOError:
                 print("Can't open file!")
-                pass
 

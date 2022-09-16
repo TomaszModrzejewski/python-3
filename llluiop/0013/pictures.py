@@ -9,23 +9,19 @@ class MyHtmlParser(HTMLParser):
         self.picUrls = []
 
     def handle_starttag(self, tag, attrs):
-        if tag == "img":
-            if len(attrs) > 0:
-                for key, value in attrs:
-                    if key == "src":
-                        self.picUrls.append(value)
+        if tag == "img" and len(attrs) > 0:
+            for key, value in attrs:
+                if key == "src":
+                    self.picUrls.append(value)
 
 
 
 
 def Pic(picurls):
-    count = 1
-    for picurl in picurls:
+    for count, picurl in enumerate(picurls, start=1):
         conn = urllib2.urlopen(picurl)
-        f = open(str(count)+".jpg", 'wb')
-        f.write(conn.read())
-        f.close()
-        count += 1
+        with open(f"{str(count)}.jpg", 'wb') as f:
+            f.write(conn.read())
 
 
 

@@ -8,10 +8,9 @@ __author__ = 'Chris5641'
 
 def get_num():
     num = 0
-    f = open('test.txt', 'r')
-    for line in f.readlines():
-        num += len(re.findall(r'[a-zA-Z0-9\']+', line))
-    f.close()
+    with open('test.txt', 'r') as f:
+        for line in f:
+            num += len(re.findall(r'[a-zA-Z0-9\']+', line))
     return num
 
 

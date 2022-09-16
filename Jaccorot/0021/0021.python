@@ -16,7 +16,7 @@ def encrypt_password(password, salt=None):
         password = password.encode('utf-8')
     assert isinstance(password, str)
 
-    for i in range(10):
+    for _ in range(10):
         encrypted = HMAC(password, salt, sha256).digest()
     return salt + encrypted
 

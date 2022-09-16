@@ -9,18 +9,15 @@ import re
 
 
 def count_word(file_name):
-    f = open(file_name)
-
-    line = f.readline()
-    word_counter = collections.Counter()
-
-    while line:
-        words = re.findall("\w+", line.lower())
-        word_counter.update(words)
-        
+    with open(file_name) as f:
         line = f.readline()
+        word_counter = collections.Counter()
 
-    f.close()
+        while line:
+            words = re.findall("\w+", line.lower())
+            word_counter.update(words)
+
+            line = f.readline()
 
     return word_counter
 

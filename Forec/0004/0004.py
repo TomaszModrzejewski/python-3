@@ -9,10 +9,7 @@ for x in words.findall(data):
         dic[x] = 1
     else:
         dic[x] += 1
-L = []
-for k,value in dic.items():
-    L.append((k, value))
-
+L = list(dic.items())
 L.sort(key = lambda t:t[0])
 
 for x in L:

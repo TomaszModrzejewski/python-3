@@ -1,8 +1,8 @@
 import os
 
-code_lines = list()
-notation_lines = list()
-blank_lines = list()
+code_lines = []
+notation_lines = []
+blank_lines = []
 
 
 def process_file(filename):
@@ -10,7 +10,7 @@ def process_file(filename):
     global notation_lines
     global blank_lines
     with open(filename, 'r') as file:
-        for line in file.readlines():
+        for line in file:
             _line = line.strip()
             if not _line:
                 blank_lines.append(_line)

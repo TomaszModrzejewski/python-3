@@ -11,7 +11,7 @@ def DiaryFiles(path):
 
 def CalcWords(file, dict1):
     f = open(file)
-    for line in f.readlines():
+    for line in f:
         for word in line.split():
             if word in dict1.keys():
                 dict1[word] += 1

@@ -9,7 +9,7 @@ def add_num_to_img(image_path, sign="42"):
     draw.text((width*0.75, height*0.075), sign, font=font, fill=(255,33,33, 255))
 
     left, right = image_path.rsplit(".", 1)
-    new_image_path = left + "_" + sign + "." + right
+    new_image_path = f"{left}_{sign}.{right}"
     im.save(new_image_path)
 
 if __name__ == '__main__':

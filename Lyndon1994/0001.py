@@ -9,10 +9,8 @@ forSelect = string.ascii_letters + string.digits
 
 
 def generate_code(count, length):
-    for x in range(count):
-        Re = ""
-        for y in range(length):
-            Re += random.choice(forSelect)
+    for _ in range(count):
+        Re = "".join(random.choice(forSelect) for _ in range(length))
         print(Re)
 
 

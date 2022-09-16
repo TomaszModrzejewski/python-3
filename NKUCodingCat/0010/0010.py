@@ -15,5 +15,17 @@ im = Image.fromarray(NewArray)
 D = ImageDraw.Draw(im)
 L = [chr(i+65) for i in range(26)]+[chr(i+97) for i in range(26)]
 for i in range(4):
-	D.text((75*i+10+random.randint(-10,10),random.randint(0,40)), random.choice(L), font=ImageFont.truetype(os.path.split(path)[0]+"/public/msyh_3.ttf",55),fill = (random.randint(0,255),random.randint(0,255),random.randint(0,255)))
-im.save(path+"/code.jpg")
+	D.text(
+		(75 * i + 10 + random.randint(-10, 10), random.randint(0, 40)),
+		random.choice(L),
+		font=ImageFont.truetype(
+			f"{os.path.split(path)[0]}/public/msyh_3.ttf", 55
+		),
+		fill=(
+			random.randint(0, 255),
+			random.randint(0, 255),
+			random.randint(0, 255),
+		),
+	)
+
+im.save(f"{path}/code.jpg")

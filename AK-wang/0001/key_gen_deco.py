@@ -16,7 +16,7 @@ def base_str():
 
 
 def key_gen():
-    keylist = [random.choice(base_str()) for i in range(KEY_LEN)]
+    keylist = [random.choice(base_str()) for _ in range(KEY_LEN)]
     return ("".join(keylist))
 
 
@@ -31,7 +31,7 @@ def print_key(func):
 def key_num(num, result=None):
     if result is None:
         result = []
-    for i in range(num):
+    for _ in range(num):
         result.append(key_gen())
     return result
 

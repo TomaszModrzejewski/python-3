@@ -27,9 +27,8 @@ def gen1():
             string.printable：可打印字符集
             string.ascii_letters: 大小字母集
     '''
-    key = ''.join(random.sample(chars, 10))
     #key2 = ''.join(random.choice(chars) for i in range(10))
-    return key
+    return ''.join(random.sample(chars, 10))
 
 def gen2():
     '''
@@ -38,8 +37,7 @@ def gen2():
         2. https://gist.github.com/willhunger/85b119793f01211de50db0e0a257dbf0
         3. http://www.wklken.me/posts/2015/03/03/python-base-datetime.html
     '''
-    key = math.modf(time.time())[0]
-    return key
+    return math.modf(time.time())[0]
 
 def gen3():
     '''
@@ -58,5 +56,5 @@ def gen3():
     '''
     return uuid.uuid4()
 
-for i in range(200):
+for _ in range(200):
     print(gen2())

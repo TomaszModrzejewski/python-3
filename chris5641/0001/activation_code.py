@@ -8,14 +8,11 @@ __author__ = 'Chris5641'
 
 
 def get_code():
-    f = open('ActivationCode.txt', 'w')
-    char_seq = 'abcdefghijklmnopqrstuvwxyz0123456789'
-    for i in range(200):
-        code = ''
-        for j in range(9):
-            code += random.choice(char_seq)
-        f.write(code+'\n')
-    f.close()
+    with open('ActivationCode.txt', 'w') as f:
+        char_seq = 'abcdefghijklmnopqrstuvwxyz0123456789'
+        for _ in range(200):
+            code = ''.join(random.choice(char_seq) for _ in range(9))
+            f.write(code+'\n')
 
 
 if __name__ == '__main__':

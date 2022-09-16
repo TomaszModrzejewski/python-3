@@ -21,7 +21,7 @@ class _DeHTMLParser(HTMLParser):
         text = data.strip()
         if len(text) > 0:
             text = sub('[ \t\r\n]+', ' ', text)
-            self.__text.append(text + ' ')
+            self.__text.append(f'{text} ')
 
     def handle_starttag(self, tag, attrs):
         if tag == 'p':

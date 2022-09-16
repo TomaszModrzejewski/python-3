@@ -17,6 +17,6 @@ def resize():
             w = int(w/x)
         print(w, h)
         im0 = im.resize((w,h),Image.ANTIALIAS)
-        im0.save('0005'+filename)
+        im0.save(f'0005{filename}')
 
 resize()

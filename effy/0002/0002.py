@@ -79,6 +79,7 @@ class Codes_Entity(object):
 Step 4:
 map between object and relational table. 
 '''
+
 mapper(Codes_Entity, codes)
 metadata.create_all(db)
 
@@ -100,9 +101,9 @@ Step 6:
 Create instances of Codes class
 '''
 raw_codes = codeGen(200)
-code_list = []
-for i in range(len(raw_codes)):
-	code_list.append(Codes_Entity(max_id+1+i, raw_codes[i]))
+code_list = [
+	Codes_Entity(max_id + 1 + i, raw_codes[i]) for i in range(len(raw_codes))
+]
 
 '''
 Step 7:

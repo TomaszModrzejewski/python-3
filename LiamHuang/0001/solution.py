@@ -31,7 +31,7 @@ def pad_zero_to_left(inputNumString, totalLength):
         return '0' * (totalLength - lengthOfInput) + inputNumString
 
 poolOfChars = string.ascii_letters + string.digits
-random_codes = lambda x, y: ''.join([random.choice(x) for i in range(y)])
+random_codes = lambda x, y: ''.join([random.choice(x) for _ in range(y)])
 
 def invitation_code_generator(quantity, lengthOfRandom, LengthOfKey):
     '''

@@ -1,8 +1,6 @@
 import uuid
 
-i = 1
-while (i < 201):
+for i in range(1, 201):
 	f = open('code.md', 'ar+')
-	s = str(i)+". "+str(uuid.uuid4()) 
+	s = f"{str(i)}. {str(uuid.uuid4())}"
 	f.write(s+"\n")
-	i +=1

@@ -7,7 +7,7 @@ def create_Num():
     sum = 0
     while True:
         i = str(uuid.uuid1())
-        if not i in result:
+        if i not in result:
             result.append(i)
             sum += 1
         if sum == number:

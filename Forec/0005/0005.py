@@ -9,4 +9,4 @@ for x in L:
     xsize = 500
     ysize = ysize * 500 // xsize
     img = ImageOps.fit(img,(xsize,ysize))
-    img.save("out"+x)
+    img.save(f"out{x}")

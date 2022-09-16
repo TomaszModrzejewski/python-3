@@ -5,7 +5,7 @@ import string
 from PIL import Image, ImageFont, ImageDraw, ImageFilter
 
 def create_strs(draw, chars, length, font_type, font_size, width, height, fg_color):
-    c_chars = ''.join([random.choice(chars) for i in range(length)])
+    c_chars = ''.join([random.choice(chars) for _ in range(length)])
     font = ImageFont.truetype(font_type, font_size)
     x0 = 9
     for c in c_chars:
@@ -17,7 +17,7 @@ def create_strs(draw, chars, length, font_type, font_size, width, height, fg_col
 
 def create_lines(draw, n_line, width, height):
     line_num = random.randint(n_line[0],n_line[1])
-    for i in range(line_num):
+    for _ in range(line_num):
         begin = (random.randint(0, width), random.randint(0, height))
         end = (random.randint(0, width), random.randint(0, height))
         draw.line([begin, end], fill=(0, 0, 0))

@@ -20,7 +20,7 @@ class sql_struct():
         try:
             conn=mysql.connector.connect(**self.config)
         except mysql.connector.Error as e:
-            print ('connect fails!{}'.format(e))
+            print(f'connect fails!{e}')
         self.conn=conn
         
 
@@ -30,12 +30,10 @@ class sql_struct():
         try:
             if data is '':
                 cursor.execute(sql_string);
-            elif type(data) is tuple:
+            elif type(data) is tuple or type(data) is dict:
                 cursor.execute(sql_string, data);
-            elif type(data) is dict:
-                cursor.execute(sql_string, data)
         except mysql.connector.Error as e:
-            print('fails{}'.format(e));
+            print(f'fails{e}');
             
     def sql_close(self):
         self.conn.close()
@@ -49,7 +47,7 @@ class gene_keys():
         self.list = [];
 
     def gene_list(self):
-        for i in range(self.num):
+        for _ in range(self.num):
             key=uuid.uuid1();
             self.list.append(str(key).replace('-',''));
 

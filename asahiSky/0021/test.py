@@ -15,8 +15,8 @@ def encrypt_password(password, salt=None):
 
 
     result = password
-    for i in range(10):
-    	result = HMAC(result,salt,sha256).digest()
+    for _ in range(10):
+        result = HMAC(result,salt,sha256).digest()
 
     return salt+result
 

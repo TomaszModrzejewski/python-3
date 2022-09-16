@@ -27,8 +27,7 @@ def make_connect(DB_info):
     connect_str = 'mysql+pymysql://{user}:{passwd}@{ip}:{port}/{database}'.format_map(DB_info)
     engine = create_engine(connect_str)
     DBSession = sessionmaker(engine)
-    session = DBSession()
-    return session
+    return DBSession()
 
 
 def parse_coupon(c_code):
@@ -38,7 +37,7 @@ def parse_coupon(c_code):
 def upload_to_database():
     session = make_connect(database_info)
     with open('coupon.txt', 'r') as file:
-        for line in file.readlines():
+        for line in file:
             c_id = re.findall(r'.*/.*:(.*)\'', str(parse_coupon(line)))
             session.add(Coupon(id=c_id.pop(), code=line))
         session.commit()

@@ -9,7 +9,7 @@ def CalcWords():
 
     lines = f.readlines()
     for line in lines:
-        for word in line.split():
+        for _ in line.split():
             nums += 1
 
     return nums

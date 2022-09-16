@@ -15,7 +15,7 @@ def random_string(y):
 	'''
 	生成指定长度的随机字符串
 	'''
-	return ''.join(random.choice(string.ascii_letters) for x in range(y))
+	return ''.join(random.choice(string.ascii_letters) for _ in range(y))
 
 
 def create_verifi_image(strs,
@@ -37,7 +37,7 @@ def create_verifi_image(strs,
 	draw = ImageDraw.Draw(img)
 	if draw_lines:
 		line_num = random.randint(*n_line)
-		for i in range(line_num):
+		for _ in range(line_num):
 			begin = (random.randint(0, size[0]), random.randint(0, size[1]))
 			end = (random.randint(0, size[0]), random.randint(0, size[1]))
 			draw.line([begin, end], fill=(0, 0, 0))

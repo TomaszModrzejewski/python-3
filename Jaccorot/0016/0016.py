@@ -20,13 +20,11 @@ def read_txt(path):
 def save_into_excel(content_dict, excel_name):
     wb = xlwt.Workbook()
     ws = wb.add_sheet("numbers",  cell_overwrite_ok=True)
-    row = 0
     col = 0
-    for i in content_dict:
+    for row, i in enumerate(content_dict):
         for k in i:
             ws.write(row, col, k)
             col += 1
-        row += 1
         col = 0
 
     wb.save(excel_name)

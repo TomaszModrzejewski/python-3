@@ -7,9 +7,7 @@ def make_number( num, length ):
     b = set()
     i = 0
     while i < num:
-        ans = ''
-        for j in range(length):
-            ans += random.choice(str)
+        ans = ''.join(random.choice(str) for _ in range(length))
         if ans not in b:
             b |= {ans}
             i += 1

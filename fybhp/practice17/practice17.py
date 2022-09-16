@@ -21,7 +21,7 @@ s = str(jdict)
 s = re.sub('{','{\n\t ',s)
 s = re.sub('}','\n}',s)
 s = re.sub('],','],\n\t',s)
-print s
+from xml.dom import minidom
 doc = minidom.Document()
 root = doc.createElement('root')
 doc.appendChild(root)
@@ -31,7 +31,6 @@ students.appendChild(comment)
 students_text = doc.createTextNode(s.decode('unicode_escape'))
 students.appendChild(students_text)
 root.appendChild(students)
-f = open("student.xml", "wb")
-f.write(doc.toprettyxml(indent = "", newl = "\n", encoding = "utf-8"))
-f.close()
+with open("student.xml", "wb") as f:
+    f.write(doc.toprettyxml(indent = "", newl = "\n", encoding = "utf-8"))
 

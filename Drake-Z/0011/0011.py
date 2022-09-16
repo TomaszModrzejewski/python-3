@@ -12,8 +12,8 @@ def filter_word(a):
 
     f = open('filtered_words.txt', 'r', encoding = 'utf-8').read()
     if a == '':
-        print('Human Rights !')  
-    elif len(re.findall(r'%s' % (a), f)) == 0:
+        print('Human Rights !')
+    elif len(re.findall(f'{a}', f)) == 0:
         print('Human Rights !')                 #非敏感词时，则打印出 Human Rights !
     else:
         print('Freedom !')              #输入敏感词语打印出 Freedom !

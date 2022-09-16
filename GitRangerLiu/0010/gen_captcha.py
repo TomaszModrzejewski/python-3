@@ -12,9 +12,8 @@ size = (240, 60)
 
 #random chars
 def gen_random():
-    charlist = [random.choice(string.ascii_uppercase) for i in range(4)]
-    chars = ''.join(charlist)
-    return chars
+    charlist = [random.choice(string.ascii_uppercase) for _ in range(4)]
+    return ''.join(charlist)
 
 def random_color():
     return (random.randint(0, 255), random.randint(0, 255), \

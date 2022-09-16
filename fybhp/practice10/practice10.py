@@ -10,8 +10,7 @@ def getcolor():
     return (random.randint(0,255),random.randint(0,255),random.randint(0,255))
 
 def getfont():
-    font = ImageFont.truetype('Arial.ttf',random.randint(50,65))
-    return font
+    return ImageFont.truetype('Arial.ttf',random.randint(50,65))
 
 check = numgenerator()
 imageFile = "./bacdgroud.jpg"

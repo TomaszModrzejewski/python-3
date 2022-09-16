@@ -13,7 +13,7 @@ def change_img(path,size=(1136,640)):
 	im = Image.open(path)
 	size=(size[1],size[0]) if im.size[1]>im.size[0] else size
 	im.thumbnail(size,Image.ANTIALIAS) #后一个参数为滤镜
-	im.save('result-'+path)
+	im.save(f'result-{path}')
 	#im.show()
 
 

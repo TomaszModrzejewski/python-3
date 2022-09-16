@@ -8,17 +8,11 @@ def get_xls_data(filename):
      # 读取xls数据
      book = xlrd.open_workbook(filename)
      sheet = book.sheet_by_index(0)
-     content = {}
-     for i in range(sheet.nrows):
-         content[i+1] = sheet.row_values(i)[1:]
-         #print(content[i+1])
-
+     content = {i+1: sheet.row_values(i)[1:] for i in range(sheet.nrows)}
      print("Liez的3月话费单：")
 
      # 统计话费
-     cost = 0
-     for i in range(sheet.nrows-1):
-         cost += float(content[i+2][7])
+     cost = sum(float(content[i+2][7]) for i in range(sheet.nrows-1))
      print("通话费:", round(cost, 2),"元")
 
      # 统计被叫主叫次数
@@ -33,12 +27,8 @@ def get_xls_data(filename):
      print("主叫",call,"次，被叫",becall,"次，共计",total,"次通话")
 
      # 统计通话时间
-     time = {}
-     for i in range(sheet.nrows-1):
-         time[i] = content[i+2][1]
-     day = {}
-     for i in range(31):
-        day[i+1] = 0
+     time = {i: content[i+2][1] for i in range(sheet.nrows-1)}
+     day = {i+1: 0 for i in range(31)}
      rday = re.compile('-(\d+?) ')
      for i in range(sheet.nrows-1):
         daycompile = rday.findall(content[i+2][1])

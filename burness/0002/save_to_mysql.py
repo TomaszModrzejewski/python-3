@@ -35,7 +35,7 @@ class save_keys_to_mysql:
 		cursor.execute('create table act_keys (id int(8) primary key, act_keys varchar(50))')
 		row=0
 		with open('keys_text.txt','r') as f:
-			for line in f.readlines():
+			for line in f:
 				#row_no='0000'+str(row)
 				act_keys=line.rstrip()
 				cursor.execute('insert into act_keys (id, act_keys) values (%s, %s)',[row,act_keys])

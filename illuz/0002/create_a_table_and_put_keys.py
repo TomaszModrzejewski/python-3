@@ -16,8 +16,7 @@ import MySQLdb as mdb
 
 
 def generate_key(num):
-    key_list = [str(uuid4()) for i in range(num)]
-    return key_list
+    return [str(uuid4()) for _ in range(num)]
 
 
 def create_a_table_and_put_keys(key_list):

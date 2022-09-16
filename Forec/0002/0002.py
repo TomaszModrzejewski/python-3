@@ -11,9 +11,7 @@ def make_number( num, length ):
     dic = set()
     i = 0
     while i < num:
-        str = ''
-        for j in range(length):
-            str += random.choice(letters)
+        str = ''.join(random.choice(letters) for _ in range(length))
         if str not in dic:
             dic |= {str}
             i += 1
@@ -38,7 +36,7 @@ def save( dic ):
     __create_table = 'create table if not exists codes(code char(64))'
     cur.execute(__create_table)
     cur.executemany('insert into codes values(%s)',dic)
-    
+
     connect.commit()
     cur.close()
     connect.close()

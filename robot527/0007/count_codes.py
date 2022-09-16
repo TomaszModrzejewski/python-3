@@ -14,7 +14,7 @@ class PyfileInfo:
         
     def count_lines(self):
         if self.file_name[-3:] != '.py':
-            print(self.file_name + ' is not a .py file!')
+            print(f'{self.file_name} is not a .py file!')
             return
         mc_flag = False
         mc_start = ''
@@ -29,21 +29,19 @@ class PyfileInfo:
                     self.total_line_num += 1
                     temp = each_line.strip()
                     if mc_flag is False:
-                        if temp[0:3] in ["'''", '"""']:
-                            mc_start = temp[0:3]
+                        if temp[:3] in ["'''", '"""']:
+                            mc_start = temp[:3]
                             mc_flag = True
                             if len(temp) >= 6 and temp[-3:] == mc_start:
                                 self.comment_line_num += 1
                                 mc_start = ''
                                 mc_flag = False
-                        else:
-                            if len(temp) == 0:
-                                self.blank_line_num += 1
-                            else:                                
-                                if temp[0] == '#':
-                                    self.comment_line_num += 1
-                                elif temp[0] in ['"', "'"] and temp[0] == temp[-1:]:
-                                    self.comment_line_num += 1                                
+                        elif len(temp) == 0:
+                            self.blank_line_num += 1
+                        elif temp[0] == '#':
+                            self.comment_line_num += 1
+                        elif temp[0] in ['"', "'"] and temp[0] == temp[-1:]:
+                            self.comment_line_num += 1
                     elif temp[-3:] == mc_start:
                         #found the end of the multiple-line comment
                         self.comment_line_num += 1
@@ -52,11 +50,11 @@ class PyfileInfo:
                     if mc_flag:
                         self.comment_line_num += 1
         except IOError as err:
-            print('File error: ' + str(err))
+            print(f'File error: {str(err)}')
 
     def display(self):
         print('-.' * 15)
-        print('The ' + self.file_name + ' code statistic is:')
+        print(f'The {self.file_name} code statistic is:')
         print('Total line number is:', self.total_line_num)
         print('Blank line number is:', self.blank_line_num)
         print('Comment line number is:', self.comment_line_num)
@@ -85,7 +83,7 @@ for each_file in pyfile_list:
     Comment_line_num += py_file.comment_line_num
 
 print('=-' * 24)
-print('All code files in ' + target_path + ' statistic is:')
+print(f'All code files in {target_path} statistic is:')
 print('Total line number is:', Total_line_num)
 print('Blank line number is:', Blank_line_num)
 print('Comment line number is:', Comment_line_num)

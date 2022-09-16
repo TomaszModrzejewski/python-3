@@ -12,10 +12,7 @@ class senseWord():
         for item in self.list:
             print item
     def checkWord(self,word):
-        for words in self.list:
-            if words == word:
-                return True
-        return False
+        return any(words == word for words in self.list)
 
 if __name__=='__main__':
     myCheck=senseWord()

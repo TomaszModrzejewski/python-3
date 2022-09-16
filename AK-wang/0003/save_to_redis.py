@@ -16,21 +16,20 @@ def base_str():
 
 
 def key_gen():
-    keylist = [random.choice(base_str()) for i in range(KEY_LEN)]
+    keylist = [random.choice(base_str()) for _ in range(KEY_LEN)]
     return ("".join(keylist))
 
 
 def key_num(num, result=None):
     if result is None:
         result = []
-    for i in range(num):
+    for _ in range(num):
         result.append(key_gen())
     return result
 
 
 def redis_init():
-    r = redis.Redis(host='localhost', port=6379, db=0)
-    return r
+    return redis.Redis(host='localhost', port=6379, db=0)
 
 
 def push_to_redis(key_list):

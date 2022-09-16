@@ -4,28 +4,23 @@ import os,sys,re
 def each(path):
 	All = []
 	for root, dirs, files in os.walk(path):
-		for name in files:
-			All.append(root+"/"+name)
+		All.extend(f"{root}/{name}" for name in files)
 	return All
 def deal(input):
-	if os.path.splitext(input)[1] in [".py",".pyw"]:
-		total,comment,empty = 0,0,0
-		f = open(input,"r")
-		in_comment = False
-		for line in f:
-			total+=1
-			if re.findall("\"\"\"$",line):
-					if in_comment:
-						in_comment = False
-					else:
-						in_comment = True
-			if not re.findall("\S",line):
-				empty+=1
-			if line[0] == "#" or in_comment:
-				comment += 1	
-		return total,comment,empty
-	else:
+	if os.path.splitext(input)[1] not in [".py", ".pyw"]:
 		return 0,0,0
+	total,comment,empty = 0,0,0
+	f = open(input,"r")
+	in_comment = False
+	for line in f:
+		total+=1
+		if re.findall("\"\"\"$",line):
+			in_comment = not in_comment
+		if not re.findall("\S",line):
+			empty+=1
+		if line[0] == "#" or in_comment:
+			comment += 1
+	return total,comment,empty
 		
 		
 if len(sys.argv)<=1:

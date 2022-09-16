@@ -2,7 +2,7 @@ import re
 import os
 from pprint import pprint
 
-path = os.getcwd() + '/word.txt'
+path = f'{os.getcwd()}/word.txt'
 
 
 def wordstat(path):

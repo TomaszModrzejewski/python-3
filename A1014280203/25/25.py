@@ -23,7 +23,7 @@ def make_audio():
                     frames_per_buffer=CHUNK)
     print('*recording')
     frames = []
-    for i in range(0, int(RATE / CHUNK * RECORD_SECONDS)):
+    for _ in range(int(RATE / CHUNK * RECORD_SECONDS)):
         data = stream.read(CHUNK)
         frames.append(data)
     print('*done recording')
@@ -73,10 +73,6 @@ def speech_to_text():
 
 
 def make_action(texts):
-    maps = {
-        '百度': 'http://www.baidu.com',
-        '网易': 'http://www.163.com'
-    }
     target = ''
     for text in texts:
         if text.find('百度') != -1:
@@ -84,6 +80,10 @@ def make_action(texts):
         elif text.find('网易') != -1:
             target = '网易'
     if target:
+        maps = {
+            '百度': 'http://www.baidu.com',
+            '网易': 'http://www.163.com'
+        }
         win32api.ShellExecute(0, 'open', maps[target], '', '', 1)
     else:
         print('Match failed:', texts)

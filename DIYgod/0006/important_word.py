@@ -8,7 +8,7 @@ def get_files(path):
     filepath = os.listdir(path)
     files = []
     for fp in filepath:
-        fppath = path + '/' + fp
+        fppath = f'{path}/{fp}'
         if(os.path.isfile(fppath)):
             files.append(fppath)
         elif(os.path.isdir(fppath)):
@@ -19,14 +19,12 @@ def get_files(path):
 def get_important_word(files):
     worddict = {}
     for filename in files:
-        f = open(filename, 'rb')
-        s = f.read()
-        words = re.findall(r'[a-zA-Z0-9]+', s)
-        for word in words:
-            worddict[word] = worddict[word] + 1 if word in worddict else 1
-        f.close()
-    wordsort = sorted(worddict.items(), key=lambda e:e[1], reverse=True)
-    return wordsort
+        with open(filename, 'rb') as f:
+            s = f.read()
+            words = re.findall(r'[a-zA-Z0-9]+', s)
+            for word in words:
+                worddict[word] = worddict[word] + 1 if word in worddict else 1
+    return sorted(worddict.items(), key=lambda e:e[1], reverse=True)
 
 if __name__ == '__main__':
     files = get_files('.')

@@ -30,9 +30,11 @@ from lxml import etree
 def read_exl(file_name):
     exl = xlrd.open_workbook(file_name)
     exl_sheet = exl.sheet_by_name('student')
-    data = {}
-    for i in range(exl_sheet.nrows):
-        data[exl_sheet.row_values(i)[0]] = exl_sheet.row_values(i)[1:]
+    data = {
+        exl_sheet.row_values(i)[0]: exl_sheet.row_values(i)[1:]
+        for i in range(exl_sheet.nrows)
+    }
+
     return json.dumps(data, encoding='utf-8')
 
 def save_to_xml(data, new_file_name):

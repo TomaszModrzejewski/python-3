@@ -27,9 +27,9 @@ def article_analysis(dirs):
         for n in doc:
             dictdata[n] = get_num(n, m)
         a = OrderedDict(sorted(dictdata.items(), key=lambda x: x[1], reverse = True))   #dict排序
-        print('在 %s 中出现次数最多的单词是：' % m)
+        print(f'在 {m} 中出现次数最多的单词是：')
         for c in a:
-            print(c+' : %s 次' % a[c])
+            print(f'{c} : {a[c]} 次')
             break
     return 0
 

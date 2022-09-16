@@ -24,8 +24,6 @@ class MyHTMLParser(HTMLParser):
     def handle_data(self, data):
         if self.in_zhengwen:
             print(data.strip())
-        else:
-            pass
 
 if __name__ == '__main__':
     parser = MyHTMLParser()

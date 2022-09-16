@@ -18,18 +18,16 @@ for line in a:
 	if flag == 1:
 		if re.match(r1,line):
 			kong_count += 1
-			if re.match(r3,line):
-				pass
-			else:
+			if not re.match(r3, line):
 				flag = -flag
 		elif re.match(r2,line):
 			kong_count += 1
 		elif line == '':
 			kong_count += 1
 		else:
-			daima_count += 1 	
+			daima_count += 1
 	elif flag == -1:
 		kong_count += 1
 		if re.match(r1,line):
 			flag = -flag
-print('空行 %s, 非空行 %s' %(kong_count, daima_count))
+print(f'空行 {kong_count}, 非空行 {daima_count}')

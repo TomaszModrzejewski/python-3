@@ -29,7 +29,7 @@ def record_wave(to_dir=None):
     print("* recording")
 
     save_buffer = []
-    for i in range(0, int(RATE / CHUNK * RECORD_SECONDS)):
+    for _ in range(int(RATE / CHUNK * RECORD_SECONDS)):
         audio_data = stream.read(CHUNK)
         save_buffer.append(audio_data)
 
@@ -45,7 +45,7 @@ def record_wave(to_dir=None):
     if to_dir.endswith('/'):
         file_path = to_dir + file_name
     else:
-        file_path = to_dir + "/" + file_name
+        file_path = f"{to_dir}/{file_name}"
 
     # save file
     wf = wave.open(file_path, 'wb')

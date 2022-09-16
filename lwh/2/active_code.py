@@ -15,8 +15,10 @@ import string
 def generate_active_code():
     active_code = []
     ascii_ = string.ascii_letters + string.digits
-    active_code = ["".join([random.choice(ascii_) for i in range(16)])
-                   for i in range(200)]
+    active_code = [
+        "".join([random.choice(ascii_) for _ in range(16)]) for _ in range(200)
+    ]
+
 
     return active_code
 

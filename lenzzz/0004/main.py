@@ -1,7 +1,5 @@
-f = open('artical.txt','r')
-artical = f.read()
-f.close()
-
+with open('artical.txt','r') as f:
+    artical = f.read()
 punctuation = ",.\"\'?!\n"
 
 for p in punctuation:
@@ -18,4 +16,3 @@ for word in artical.split(" "):
 for key in words:
     if key == " ":
         continue
-    print key,words[key]

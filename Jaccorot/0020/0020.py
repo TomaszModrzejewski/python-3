@@ -14,10 +14,7 @@ def count_the_dail_time(filename):
     sheet = excel.sheet_by_index(0)
     row_nums = sheet.nrows
     col_nums = sheet.ncols
-    total_time = 0
-    for i in range(1,row_nums):
-        total_time += int(sheet.cell_value(i, 3))
-    return total_time
+    return sum(int(sheet.cell_value(i, 3)) for i in range(1,row_nums))
 
 
 if __name__ == "__main__":

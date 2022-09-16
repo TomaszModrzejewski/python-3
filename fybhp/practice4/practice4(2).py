@@ -6,7 +6,7 @@ map = {}
 allLines = file.readlines()
 
 def pre(i):
-    if not i in s:
+    if i not in s:
         map[i] = 1
         s.add(i)
     else:

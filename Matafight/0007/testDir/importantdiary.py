@@ -13,11 +13,11 @@ class countWord:
         for lines in fopen.readlines():
             words=re.findall(r"\w+",lines);
             for items in words:
-                    if items in self.dic.keys():
-                        self.dic[items]+=1;
-                    else:
-                        self.dic[items]=1;
-        
+                if items in self.dic:
+                    self.dic[items]+=1;
+                else:
+                    self.dic[items]=1;
+
         #对字典value值排序
         dict= sorted(self.dic.iteritems(), key=lambda d:d[1], reverse = True);
         self.word=dict[0][0];

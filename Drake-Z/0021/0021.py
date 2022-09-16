@@ -20,10 +20,7 @@ def register(username, password):
 
 def login(username, password):
     b = get_md5(password + username + 'the-Salt' )
-    if b==db[username]:
-        return True
-    else:
-        return False
+    return b == db[username]
 a = input('注册输入用户名：')
 b = input('注册输入密码：')
 register(a, b)

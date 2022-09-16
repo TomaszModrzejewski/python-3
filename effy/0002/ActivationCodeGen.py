@@ -8,9 +8,7 @@ def digit(raw):
 
 def codeGen(n):
 	codes_pool = []
-	for i in range(n):
-		code = ""
-		for i in range(10):
-			code += digit(codeSeedA)
+	for _ in range(n):
+		code = "".join(digit(codeSeedA) for _ in range(10))
 		codes_pool.append(code)
 	return codes_pool

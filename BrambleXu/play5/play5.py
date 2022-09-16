@@ -13,8 +13,8 @@ def thumbnail_rel(path):
         # print (ext)
         img = Image.open(infile)
         img.thumbnail(size)
-        img.save( file + ".thum.jpg")
-        #print (im.format, im.size, im.mode)
+        img.save(f"{file}.thum.jpg")
+            #print (im.format, im.size, im.mode)
     print ('Done!')
 
 def thumbnail_abs(path):
@@ -24,8 +24,8 @@ def thumbnail_abs(path):
         # print (ext)
         img = Image.open(infile)
         img.thumbnail(size)
-        img.save( path + '/output/' + ext)
-        #print (im.format, im.size, im.mode)
+        img.save(f'{path}/output/{ext}')
+            #print (im.format, im.size, im.mode)
     print ('Done!')
 
 

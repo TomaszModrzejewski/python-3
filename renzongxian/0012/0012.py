@@ -12,13 +12,8 @@
 
 
 def filter_words(words):
-    # Read filtered words from file named 'filtered_words.txt'
-    file_object = open('filtered_words.txt', 'r')
-    filtered_words = []
-    for line in file_object:
-        filtered_words.append(line.strip('\n'))
-    file_object.close()
-
+    with open('filtered_words.txt', 'r') as file_object:
+        filtered_words = [line.strip('\n') for line in file_object]
     # Check if the input words include the filtered words and replace the filtered with '*'
     for filtered_word in filtered_words:
         if filtered_word in words:

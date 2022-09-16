@@ -26,6 +26,6 @@ def wordStatistics(path):
 
 if __name__ == '__main__':
 	import os
-	wordDict = wordStatistics(os.getcwd()+'/word.txt')
+	wordDict = wordStatistics(f'{os.getcwd()}/word.txt')
 	for k,v in wordDict.items():
 		print('key is \'%s\',value is %s'%(k,v))

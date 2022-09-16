@@ -42,11 +42,11 @@ class UnreadInformation:
         unread_size = max(self.image.size[0],self.image.size[1]) / 4
         font = ImageFont.truetype("simsun.ttc",unread_size)
         location_x = (self.image.size[0] - font.getsize(unread_str)[0])
-     
+
         draw = ImageDraw.Draw(self.image)
         draw.text((location_x,0),unread_str,(255,0,0),font)
-        
-        self.image.save('D:/python workSpace/showmethecode/0000/face' + unread_str + '.jpg')
+
+        self.image.save(f'D:/python workSpace/showmethecode/0000/face{unread_str}.jpg')
         return True
 
 test = UnreadInformation()

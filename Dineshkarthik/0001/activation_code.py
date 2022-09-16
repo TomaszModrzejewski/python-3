@@ -7,11 +7,10 @@ __author__ = 'Dineshkarthik'
 import uuid
 
 def act_code(count):
-    f = open('code.txt', 'wb')
-    for i in range(count):
-        s = str(uuid.uuid4().get_hex().lower()[0:8])
-        f.write(''.join(s) + '\n')
-    f.close()
+    with open('code.txt', 'wb') as f:
+        for _ in range(count):
+            s = str(uuid.uuid4().get_hex().lower()[:8])
+            f.write(''.join(s) + '\n')
 
 if __name__ == '__main__':
     act_code(200)

@@ -3,12 +3,13 @@
 第 0008 题：一个HTML文件，找出里面的正文。
 """
 
+
 import re, urllib.request, time
 url = input('Enter the URL which you wish to extract > ')
-if '' == url:
+if url == '':
     url = "https://adblockplus.org/zh_CN/acceptable-ads"
 
-print('We will extract text data from ' + url + ' :')
+print(f'We will extract text data from {url} :')
 
 
 with urllib.request.urlopen(url) as response:
@@ -33,6 +34,6 @@ with urllib.request.urlopen(url) as response:
     with open(file_name, 'wt') as textfile:
         #textfile.write(text)
         print(text, file = textfile)
-    print('Extract finished, the text file is: ' + file_name)
+    print(f'Extract finished, the text file is: {file_name}')
 
         

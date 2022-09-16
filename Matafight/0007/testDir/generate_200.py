@@ -6,7 +6,7 @@ class generate:
         self.num=0;
         self.listid=[];
     def generate_uuid(self,num):
-        for i in range(int(num)):
+        for _ in range(int(num)):
             self.listid.append(uuid.uuid1());
 
     def get_uuid(self):

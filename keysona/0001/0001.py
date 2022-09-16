@@ -21,7 +21,7 @@ def make_promo_code(digit,count):
     alphanums = [str(i) for i in range(10)] + [chr(base+i) for i in range(26)]
     with open('result','w') as f:
         while len(results) < 200:
-            temp = ''.join(random.choice(alphanums) for j in range(digit))
+            temp = ''.join(random.choice(alphanums) for _ in range(digit))
             if temp not in results:
                 f.write(temp+'\r\n')
                 results.add(temp)

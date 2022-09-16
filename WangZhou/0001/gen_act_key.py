@@ -12,7 +12,7 @@ def gen_act_key(n):
     for i in range(n):
         code0 = str(uuid.uuid1()).split('-')[0]
         code1 = '-'.join(str(uuid.uuid3(uuid.NAMESPACE_DNS, f'{i}')).split('-')[1:])
-        act_code = code0 + '-' + code1
+        act_code = f'{code0}-{code1}'
         act_code_store[f'id-{i}'] = act_code
     return act_code_store
 

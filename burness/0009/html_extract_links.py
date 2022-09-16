@@ -9,12 +9,10 @@ class MyHTMLParser(HTMLParser):
  
     def handle_starttag(self, tag, attrs):
         #print "Encountered the beginning of a %s tag" % tag
-        if tag == "a":
-            if len(attrs) == 0: pass
-            else:
-                for (variable, value)  in attrs:
-                    if variable == "href":
-                        self.links.append(value)
+        if tag == "a" and len(attrs) != 0:
+            for (variable, value)  in attrs:
+                if variable == "href":
+                    self.links.append(value)
  
 if __name__ == "__main__":
     # html_code = """

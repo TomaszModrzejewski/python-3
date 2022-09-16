@@ -24,7 +24,7 @@ def make_promo_code(digit,count):
     cur.execute("create table promo_code(id int auto_increment primary key,promo_code varchar(10))")
     conn.commit()
     while len(results) < 200:
-        promo_code = ''.join(random.choice(alphanums) for j in range(digit))
+        promo_code = ''.join(random.choice(alphanums) for _ in range(digit))
         if promo_code not in results:
             cur.execute("insert into promo_code(promo_code) values('{0}')".format(promo_code))
             results.add(promo_code)

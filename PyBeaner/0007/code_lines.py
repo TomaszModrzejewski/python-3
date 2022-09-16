@@ -24,7 +24,7 @@ def count_line(line):
 
 def scan_dir(directory, suffix="*.py"):
     directory = os.path.abspath(directory)
-    print("Scanning files in %s ..." % directory)
+    print(f"Scanning files in {directory} ...")
     for cur_dir, dirs, files in os.walk(directory):
         for file in files:
             if not fnmatch.fnmatch(file, suffix):

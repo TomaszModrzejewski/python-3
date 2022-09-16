@@ -5,7 +5,7 @@ from PIL import Image, ImageDraw,ImageFont
 
 def drawNumberOnIcon(imgpath, number):
     img = Image.open(imgpath)
-    if (None == img):
+    if img is None:
         print('打开图片失败')
         return
 

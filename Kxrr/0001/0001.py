@@ -10,10 +10,11 @@ codeRound = 10
 codeResult = []
 
 while len(codeResult) != codeAmount:
-     everyCode =''.join((random.choice(ALL_LETTERS) for i in range(codeRound)))
+     everyCode = ''.join(random.choice(ALL_LETTERS) for _ in range(codeRound))
      if everyCode not in codeResult:
         codeResult.append(everyCode)
 
-print len(codeResult)
-print codeResult
+__author__ = 'Kxrr'
+
+__author__
 

@@ -10,7 +10,7 @@ import ImageFont
 import ImageFilter
 
 def generateRandomLetters():
-    return ''.join([choice(string.ascii_uppercase) for x in range(4)])
+    return ''.join([choice(string.ascii_uppercase) for _ in range(4)])
 
 
 def createVerifyImg(str):
@@ -20,12 +20,18 @@ def createVerifyImg(str):
 
     for x in range(240):
         for y in range(60):
-            draw.point((x,y), tuple([choice(range(128,255)) for color in range(3)]))
+            draw.point((x,y), tuple(choice(range(128,255)) for _ in range(3)))
 
 
 
     for x in range(len(str)):
-        draw.text((60 * x + 10, 10), str[x], tuple([choice(range(32,127)) for color in range(3)]), font)
+        draw.text(
+            (60 * x + 10, 10),
+            str[x],
+            tuple(choice(range(32, 127)) for _ in range(3)),
+            font,
+        )
+
 
     img = img.filter(ImageFilter.BLUR)
     return img

@@ -15,10 +15,9 @@ def img_crawler(url):
             img_content = urlopen(img_url).read()
         except:
             pass
-        print("Downloading... "+img_url)
-        img_f = open(img_url.split('/')[-1], 'wb')
-        img_f.write(img_content)
-        img_f.close()
+        print(f"Downloading... {img_url}")
+        with open(img_url.split('/')[-1], 'wb') as img_f:
+            img_f.write(img_content)
         print("Complete!")
 
 if __name__ == '__main__':

@@ -10,7 +10,7 @@ images = s.find_all('img', pic_type='0')
 count = 1
 def download(src):
     global count
-    file_name = str(count) + '.jpg'
+    file_name = f'{str(count)}.jpg'
     content = urlopen(src).read()
     with open(file_name, 'wb') as f:
         f.write(content)

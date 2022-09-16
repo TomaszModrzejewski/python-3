@@ -7,7 +7,7 @@ chars = string.ascii_uppercase + string.digits
 
 def generate_coupons(count, coupon_length=5):
     coupons = []
-    for i in range(count):
+    for _ in range(count):
         coupon = generate_one_coupon(coupon_length=coupon_length)
         while coupon in coupons:
             coupon = generate_one_coupon(coupon_length)
@@ -19,7 +19,7 @@ def generate_coupons(count, coupon_length=5):
 
 def generate_one_coupon(coupon_length=5):
     coupon = []
-    for i in range(coupon_length):
+    for _ in range(coupon_length):
         ch = choice(chars)
         coupon.append(ch)
     return "".join(coupon)

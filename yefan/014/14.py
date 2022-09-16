@@ -10,10 +10,8 @@ def read_file(filename):
     with open(r'C:\Python27\oneday_one\student.txt','r') as fp:
         content = fp.read().decode('gbk').encode('utf-8')
         #print type(content)
-    #simplejson这个模块还没细看，怎么解码还是需要了解下
-    d = json.JSONDecoder().decode(content)
     #d=json.loads(content)
-    return d  
+    return json.JSONDecoder().decode(content)  
 
 #生成对应的xls文件
 def gen_xls(d,filename):

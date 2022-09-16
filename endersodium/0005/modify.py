@@ -30,7 +30,7 @@ def main():
 		try:
 			resize_image(i)
 		except IOError:
-			print("Oops! %s is not supported to make the change!" % i)
+			print(f"Oops! {i} is not supported to make the change!")
 
 if __name__ == '__main__':
 	main()

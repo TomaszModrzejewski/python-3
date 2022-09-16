@@ -2,7 +2,7 @@ import requests
 import pyquery
 
 url = 'https://github.com/A1014280203/show-me-the-code'
-url_list = list()
+url_list = []
 resp = requests.get(url)
 doc = pyquery.PyQuery(resp.content.decode())
 a_tags = doc.find('a')

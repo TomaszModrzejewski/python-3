@@ -2,9 +2,9 @@ import uuid
 
 def gen(num, len):
 	L = []
-	for i in range(num):
+	for _ in range(num):
 		ran = str(uuid.uuid4()).replace('-', '')[:len]
-		if not ran in L:
+		if ran not in L:
 			L.append(ran)
 	return L
 

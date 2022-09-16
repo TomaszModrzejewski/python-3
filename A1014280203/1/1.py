@@ -12,10 +12,9 @@ coupon = {
 def gen_coupon(id, goods):
     coupon['id'] = id
     coupon['goods'] = goods
-    raw = '/'.join([k + ':' + v for k, v in coupon.items()])
+    raw = '/'.join([f'{k}:{v}' for k, v in coupon.items()])
     raw_64 = base64.urlsafe_b64encode(raw.encode('utf-8'))
-    c_code = raw_64.decode()
-    return c_code
+    return raw_64.decode()
 
 
 def save_coupon(c_code):

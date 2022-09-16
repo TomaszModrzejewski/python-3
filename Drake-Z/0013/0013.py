@@ -27,18 +27,17 @@ def downloadImage(pic_url):
     dirct = '0013'
     try:  
         if not os.path.exists(dirct):                                   #创建存放目录
-            os.mkdir(dirct)  
+            os.mkdir(dirct)
     except:  
-        print('Failed to create directory in %s' % dirct)
-        exit()  
+        print(f'Failed to create directory in {dirct}')
+        exit()
     for i in pic_url:
-        data = urllib.request.urlopen(i).read()  
+        data = urllib.request.urlopen(i).read()
         i = re.split('/', i)[-1]
         print(i)
-        path = dirct + '/' +i
-        f = open(path, 'wb')
-        f.write(data)
-        f.close()
+        path = f'{dirct}/{i}'
+        with open(path, 'wb') as f:
+            f.write(data)
     print('Done !')
 
 url = 'http://tieba.baidu.com/p/2166231880'

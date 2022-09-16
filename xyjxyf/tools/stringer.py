@@ -37,7 +37,7 @@ def dict_to_json(object=None, begin_indent="", indent=u'\t', newl=u'\n'):
     for key in object:
         ret_str = ret_str + space + key + ": "
         item = object[key]
-        ret_str = ret_str + u'%s,' % str(item)
+        ret_str = f'{ret_str}{str(item)},'
         # if type(item) is list:
         #     list_to_json(item)
         # elif type(item) is dict:
@@ -59,10 +59,10 @@ def list_to_json(object=None, begin_indent="", indent=u'\t', newl=u'\n'):
     if type(object) is not list:
         return None
 
-    ret_str = u'[' + newl
+    ret_str = f'[{newl}'
     space = begin_indent + indent
     for item in object:
-        ret_str = ret_str + space + u'%s,' % str(item)
+        ret_str = ret_str + space + f'{str(item)},'
         # if type(item) is list:
         #     list_to_json(item)
         # elif type(item) is dict:

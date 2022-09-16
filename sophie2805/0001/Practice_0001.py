@@ -15,8 +15,8 @@ def randomSequence(r,l):
 
     # Method_2
     sl = list(s)
-    print sl
-    for i in range(r):
+    s = string.letters + string.digits + '@#$%&*'
+    for _ in range(r):
         random.shuffle(sl)
         random_seq.append(''.join(sl[:l]))
     return random_seq

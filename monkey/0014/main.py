@@ -37,16 +37,14 @@ def writeInXLS(dict):
     # 创建 表
     sheet = file.add_sheet('student', cell_overwrite_ok=True)
 
-    row = 0
     col = 0
 
-    for k, v in sorted(dict.items(), key=lambda d:d[0]):
+    for row, (k, v) in enumerate(sorted(dict.items(), key=lambda d:d[0])):
         sheet.write(row, col, k)
         for i in v:
             col += 1
             sheet.write(row, col, i)
 
-        row += 1
         col = 0
 
     file.save(fileName)

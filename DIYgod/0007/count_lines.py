@@ -7,7 +7,7 @@ def get_files(path):
     filepath = os.listdir(path)
     files = []
     for fp in filepath:
-        fppath = path + '/' + fp
+        fppath = f'{path}/{fp}'
         if(os.path.isfile(fppath)):
             files.append(fppath)
         elif(os.path.isdir(fppath)):
@@ -18,15 +18,14 @@ def get_files(path):
 def count_lines(files):
     line, blank, note = 0, 0, 0
     for filename in files:
-        f = open(filename, 'rb')
-        for l in f:
-            l = l.strip()
-            line += 1
-            if l == '':
-                blank += 1
-            elif l[0] == '#' or l[0] == '/':
-                note += 1
-        f.close()
+        with open(filename, 'rb') as f:
+            for l in f:
+                l = l.strip()
+                line += 1
+                if l == '':
+                    blank += 1
+                elif l[0] in ['#', '/']:
+                    note += 1
     return (line, blank, note)
 
 if __name__ == '__main__':

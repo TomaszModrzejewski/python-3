@@ -2,11 +2,12 @@
     有个目录，里面是你自己写过的程序，统计一下你写过多少行代码。
     包括空行和注释，但是要分别列出来。
 """
+
 # -*- coding:gbk -*-
 import os
 import re
 
-root_dir = os.getcwd() + "/卢炜豪"
+root_dir = f"{os.getcwd()}/卢炜豪"
 os.chdir(root_dir)
 
 code_count = 0

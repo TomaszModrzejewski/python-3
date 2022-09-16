@@ -21,9 +21,8 @@ def catch_tieba_pics(url):
 def download_pic(url):
     image_content = urllib.urlopen(url).read()
     file_name = os.path.basename(urlsplit(url)[2])
-    output = open(file_name, 'wb')
-    output.write(image_content)
-    output.close()
+    with open(file_name, 'wb') as output:
+        output.write(image_content)
 
 
 if __name__ == '__main__':

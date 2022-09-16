@@ -9,11 +9,10 @@ from hmac import HMAC
 
 def encode(password):
     salt = os.urandom(8)
-    print salt
-
+    salt = os.urandom(8)
     result = password.encode("utf-8")
 
-    for i in range(10):
+    for _ in range(10):
         result = HMAC(result, salt, sha256).digest()
 
     return result

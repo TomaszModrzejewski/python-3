@@ -19,10 +19,7 @@ def findTagA():
         soup = BeautifulSoup(file)
 
     # print(soup.prettify())
-    links = []
-    for i in soup.find_all('a'):
-        links.append(i['href'])
-
+    links = [i['href'] for i in soup.find_all('a')]
     print(links)
 
 if __name__ == '__main__':

@@ -1,7 +1,7 @@
 #coding=utf-8
 from bottle import static_file,route, run, post, request, redirect
 import os, makeweb, urllib,re,json,time
-Root = os.path.split(os.path.realpath(__file__))[0]+"/static/"
+Root = f"{os.path.split(os.path.realpath(__file__))[0]}/static/"
 Const = """
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -48,9 +48,7 @@ def Accept():
 	for i in L:
 		A = re.split("=",i)
 		M[A[0]] = urllib.unquote(A[1])
-	New = {}
-	New["Name"] = M["textfield"]
-	New["Content"] = M["textarea"]
+	New = {"Name": M["textfield"], "Content": M["textarea"]}
 	makeweb.Stor_in(New)
 	redirect('/board', 302)
 

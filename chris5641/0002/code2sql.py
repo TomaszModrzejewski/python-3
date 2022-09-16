@@ -7,16 +7,15 @@ __author__ = 'Chris5641'
 
 
 def code2sql():
-    f = open('ActivationCode.txt', 'r')
-    conn = pymysql.connect(user='root', passwd='password')
-    cursor = conn.cursor()
-    cursor.execute('create database if not exists accode')
-    cursor.execute('use accode')
-    cursor.execute('create table accode(id int auto_increment primary key, code varchar(10))')
-    for line in f.readlines():
-        cursor.execute('insert into accode (code) values (%s)', [line.strip()])
-    conn.commit()
-    f.close()
+    with open('ActivationCode.txt', 'r') as f:
+        conn = pymysql.connect(user='root', passwd='password')
+        cursor = conn.cursor()
+        cursor.execute('create database if not exists accode')
+        cursor.execute('use accode')
+        cursor.execute('create table accode(id int auto_increment primary key, code varchar(10))')
+        for line in f:
+            cursor.execute('insert into accode (code) values (%s)', [line.strip()])
+        conn.commit()
     cursor.close()
     conn.close()
 

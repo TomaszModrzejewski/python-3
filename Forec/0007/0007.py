@@ -10,16 +10,16 @@ def get_line( file_path ):
     cFlag = True
     exp_re = re.compile(r'[\"\'].*?[\"\']')
     for x in file_dir:
-        if os.path.isfile(x) and (
-            os.path.splitext(x)[1] == '.py'
-            or os.path.splitext(x)[1] == '.c'
-            or os.path.splitext(x)[1] == '.cpp'
-            ):
+        if os.path.isfile(x) and os.path.splitext(x)[1] in [
+            '.py',
+            '.c',
+            '.cpp',
+        ]:
             try:
                 f = open( x, 'r' )
             except:
-                print('Cannot open file %s' % x)
-            for line in f.readlines():
+                print(f'Cannot open file {x}')
+            for line in f:
                 alls += 1
                 if line.strip() == '' and cFlag:
                     space += 1
@@ -32,29 +32,27 @@ def get_line( file_path ):
                         exp += 1
                     else :
                         code += 1
-                elif os.path.splitext(x)[1] == '.c' or os.path.splitext(x)[1] == '.cpp':
+                elif os.path.splitext(x)[1] in ['.c', '.cpp']:
                     if r'*/' in line:
                         cFlag = True
                         exp += 1
                     elif r'/*' in line:
                         cFlag = False
                         exp += 1
-                    elif not cFlag:
-                        exp += 1
-                    elif r'//' in line:
+                    elif not cFlag or r'//' in line:
                         exp += 1
                     else:
                         code += 1
-            cFlag = True 
+            cFlag = True
             try:
                 f.close()
             except:
                 pass
-                
-    print( '''All Lines total : %d
+
+        print( '''All Lines total : %d
 Codes total : %d
 Spaces total: %d
 Explanation : %d'''
-% ( alls, code, space, exp ))
+    % ( alls, code, space, exp ))
 
 get_line('.')

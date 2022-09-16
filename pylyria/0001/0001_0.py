@@ -5,10 +5,10 @@ import random
 import string
 
 def activation_code(id,length=16):
-    prefix = hex(int(id))[2:]+'V'
+    prefix = f'{hex(int(id))[2:]}V'
     length = length - len(prefix)
     chars=string.ascii_uppercase+string.digits
-    return prefix + ''.join([random.choice(chars) for i in range(length)])
+    return prefix + ''.join([random.choice(chars) for _ in range(length)])
 
 def get_id(code):
     return str(int(code.upper(), 16))

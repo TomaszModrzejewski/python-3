@@ -10,7 +10,7 @@ def id_generator(size=4, chars=string.ascii_uppercase + string.digits + string.a
     #[random.choice(chars) for _ in range(size)]为列表解析
     #(random.choice(chars) for _ in range(size))为生成器，其对内存更友好
     list = []
-    for i in range(4):
+    for _ in range(4):
         a = ''.join(random.choice(chars) for _ in range(size))
         list.append(a)
     return list

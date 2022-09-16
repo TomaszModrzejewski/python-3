@@ -16,7 +16,7 @@ import random
 
 def generate_authenticode():
     # Generate random letters
-    letters = ''.join([random.choice(string.ascii_letters) for i in range(4)])
+    letters = ''.join([random.choice(string.ascii_letters) for _ in range(4)])
 
     # Set the size of the image
     width = 100

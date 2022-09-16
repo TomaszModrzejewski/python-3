@@ -10,10 +10,8 @@ def filter_word(input_word):
 	input_word = input_word.split()
 	filter_word_list = []
 	with open('./filter_word.txt','r') as f:
-		for content in f:
-			# print content
-			filter_word_list.append(content.strip('\n'))
-		# print(filter_word_list)
+		filter_word_list.extend(content.strip('\n') for content in f)
+			# print(filter_word_list)
 	return filter_word_list
 
 if __name__ == '__main__':

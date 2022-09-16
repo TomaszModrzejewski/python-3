@@ -10,7 +10,7 @@ s = set()
 map = {}
 
 def pre(i,s):
-    if not i in s:
+    if i not in s:
         map[i] = 1
         s.add(i)
     else:
@@ -18,13 +18,13 @@ def pre(i,s):
 
 def parselines(allLines):
     for eachLine in allLines:
-        #将set置于此处，控制其作用域。
-        s = set()
         alist = eachLine.split()
         if alist != []:
+            #将set置于此处，控制其作用域。
+            s = set()
             for i in alist:
                 i = i.lower()
-                if i[-1] == '.' or i[-1] == ',' or i[-1] == "'" or i[-1] == '?' :
+                if i[-1] in ['.', ',', "'", '?']:
                     i = i[:-1]
                     if i == '':
                         continue
@@ -34,8 +34,6 @@ def parselines(allLines):
                         pre(j,s)
                     continue
                 pre(i,s)
-        else:
-            pass
 
 for root, dirs, files in file_list:
     for file in files:

@@ -5,8 +5,10 @@ class senseWord():
         self.list=[]
         self.word=[]
         inputfile=file('filtered_word.txt','r')
-        for lines in inputfile.readlines():
-            self.list.append(lines.decode('utf-8').encode('gbk'))#I've set the file coding type as utf-8
+        self.list.extend(
+            lines.decode('utf-8').encode('gbk') for lines in inputfile.readlines()
+        )
+
         inputfile.close()
         self.list=map(string.strip,self.list);
        
@@ -24,22 +26,16 @@ class senseWord():
 
 if __name__=='__main__':
     myCheck=senseWord()
-    while True:
-        ipstr=str(raw_input())
-        if ipstr:
-           if(myCheck.checkWord(ipstr)):
-               senseList=myCheck.getWord()
-               for items in senseList:
-                   length=len(items.decode('gbk'))
-                   torep='*';
-                   for i in range(1,length):
-                       torep+='*'
-                   ipstr=ipstr.replace(items,torep)
-               print ipstr
-           else:
-               print ipstr
-        else:
-            break
+    while ipstr := str(raw_input()):
+        if (myCheck.checkWord(ipstr)):
+            senseList=myCheck.getWord()
+            for items in senseList:
+                length=len(items.decode('gbk'))
+                torep='*';
+                for _ in range(1,length):
+                    torep+='*'
+                ipstr=ipstr.replace(items,torep)
+        senseList=myCheck.getWord()
 
 
 

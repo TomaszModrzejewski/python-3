@@ -10,10 +10,10 @@ COUPON_STR_LENGTH = 8
 
 if __name__ == "__main__":
 	lst = list(string.letters)[26:] + list(string.digits)
-	for i in range(COUPON_NUM):
-		coupon_list = [random.choice(lst) for i in range(COUPON_STR_LENGTH)]
+	for _ in range(COUPON_NUM):
+		coupon_list = [random.choice(lst) for _ in range(COUPON_STR_LENGTH)]
 		coupon_str = "".join(coupon_list)
-		print coupon_str
+		coupon_list = [random.choice(lst) for i in range(COUPON_STR_LENGTH)]
 
 			
 		

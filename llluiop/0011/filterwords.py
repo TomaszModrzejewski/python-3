@@ -5,12 +5,8 @@ import os
 
 
 def Words(path):
-    filterwords = []
     f = open(path)
-    for word in f.readlines():
-        filterwords.append(word.strip('\n'))
-
-    return filterwords
+    return [word.strip('\n') for word in f]
 
 
 if __name__ == '__main__':

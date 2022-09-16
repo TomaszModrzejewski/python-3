@@ -25,10 +25,8 @@ def digit(raw):
 
 def codeGen(n):
 	codes_pool = []
-	for i in range(n):
-		code = ""
-		for i in range(10):
-			code += digit(codeSeedA)
+	for _ in range(n):
+		code = "".join(digit(codeSeedA) for _ in range(10))
 		codes_pool.append(code)
 	return codes_pool
 
@@ -37,10 +35,7 @@ Standard uuid
 '''
 import uuid
 def uuidGen(n):
-	codes_pool =[]
-	for i in range(n):
-		codes_pool.append(uuid.uuid4())
-	return codes_pool
+	return [uuid.uuid4() for _ in range(n)]
 
 #codes_udf = codeGen(10000)
 codes_uuid = uuidGen(10000)

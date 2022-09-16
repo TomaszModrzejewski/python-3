@@ -18,11 +18,9 @@ import redis
 def store_redis(filepath):
     r = redis.StrictRedis(host = 'localhost', port = 6379, db = 0)
     f = open(filepath, 'rb')
-    i = 0
-    for line in f.readlines():
+    for i, line in enumerate(f):
         code = line.strip()
         r.set(i, code)
-        i += 1
 
 
 

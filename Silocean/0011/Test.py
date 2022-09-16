@@ -1,17 +1,11 @@
 import io
 
 file = io.open('filtered_words.txt', 'r')
-list = []
-for word in file.readlines():
-    list.append(word.strip('\n'))
-
+list = [word.strip('\n') for word in file.readlines()]
 print(list)
 
 def isValid(word):
-    for x in list:
-        if word == x:
-            return False
-    return True
+    return all(word != x for x in list)
 
 myword = input("please input a word:")
 if isValid(myword):

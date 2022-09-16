@@ -3,12 +3,11 @@
 import random, string
 
 def random_str(num, length = 7):
-    f = open("Running_result.txt", 'wb')
-    for i in range(num):
-        chars = string.letters + string.digits
-        s = [random.choice(chars) for i in range(length)]
-        f.write(''.join(s) + '\n')
-    f.close()
+    with open("Running_result.txt", 'wb') as f:
+        for _ in range(num):
+            chars = string.letters + string.digits
+            s = [random.choice(chars) for _ in range(length)]
+            f.write(''.join(s) + '\n')
 
 if __name__ == '__main__':
     random_str(200)

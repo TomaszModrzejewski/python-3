@@ -4,7 +4,7 @@ from itertools import dropwhile
 
 def generateActivationCode(num):
     codeList = []
-    for i in range(num):
+    for _ in range(num):
         code = str(uuid.uuid4()).replace('-','').upper()
         while code in codeList:
             code = str(uuid.uuid4()).replace('-','').upper()

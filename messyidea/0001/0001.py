@@ -2,7 +2,7 @@
 import uuid
 
 def gen( num):
-    assert isinstance(num, int) == True
+    assert isinstance(num, int)
     assert num > 0
     rst = []
     while True:

@@ -11,7 +11,7 @@ import datetime
 def current_time(request):
     now = datetime.datetime.now()
 
-    html = "<html><body>It is now %s.</body></html>" % now
+    html = f"<html><body>It is now {now}.</body></html>"
 
     return HttpResponse(html)
 

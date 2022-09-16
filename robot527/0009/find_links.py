@@ -3,12 +3,13 @@
 第 0009 题：一个HTML文件，找出里面的链接。
 """
 
+
 import re, urllib.request
 url = input('Enter the URL which you wish to extract > ')
-if '' == url:
+if url == '':
     url = "https://adblockplus.org/zh_CN/acceptable-ads"
 
-print('We will extract links from ' + url + ' :')
+print(f'We will extract links from {url} :')
 
 
 with urllib.request.urlopen(url) as response:
@@ -18,7 +19,5 @@ with urllib.request.urlopen(url) as response:
     except UnicodeDecodeError:
         content = content.decode('gbk')
     link_list = re.findall('''(?<=href=)["'](.[^"']+)["']''', content)
-    i = 1
-    for item in link_list:
+    for i, item in enumerate(link_list, start=1):
         print('%d:' % i, item)
-        i += 1

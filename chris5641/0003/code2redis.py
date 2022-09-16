@@ -7,12 +7,10 @@ __author__ = 'Chris5641'
 
 
 def code2redis():
-    i = 0
     f = open('ActivationCode.txt', 'r')
     r = redis.Redis(host='localhost', port=6379)
-    for line in f.readlines():
+    for i, line in enumerate(f):
         r.zadd('codes', line.strip(), i)
-        i += 1
 
 
 if __name__ == '__main__':

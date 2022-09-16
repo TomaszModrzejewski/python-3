@@ -3,21 +3,12 @@
 import random
 
 def randRGB(min=0, max=255):
-    if min < 0:
-        min = 0
-    if min > 255:
-        min = 255
-
-    if max < 0:
-        max = 0
-    if max > 255:
-        max = 255
-
+    min = max(min, 0)
+    min = min(min, 255)
+    max = max(max, 0)
+    max = min(max, 255)
     if max < min:
-        tmp = min
-        min = max
-        max = tmp
-
+        min, max = max, min
     return (random.randint(min, max),
            random.randint(min, max),
            random.randint(min, max))

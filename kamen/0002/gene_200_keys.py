@@ -6,7 +6,7 @@ class gene_keys():
         self.list = [];
 
     def gene_list(self):
-        for i in range(self.num):
+        for _ in range(self.num):
             key=uuid.uuid1();
             self.list.append(key)
 

@@ -5,13 +5,11 @@ import random
 import string
 
 def activation_code(chars = string.ascii_uppercase + string.digits, length=16):
-    return ''.join([random.choice(chars) for i in range(length)])
+    return ''.join([random.choice(chars) for _ in range(length)])
 
 if __name__ == '__main__':
     code_collection = set()
-    for i in range(200):
+    for _ in range(200):
         code = activation_code()
         if code not in code_collection:
             code_collection.add(code)
-        else:
-            continue

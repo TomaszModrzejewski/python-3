@@ -16,9 +16,10 @@ love
 sex
 jiangge
 """
+
 word_filter=set()
 with open('source/0011/filtered_words.txt') as f:
-    for w in f.readlines():
+    for w in f:
         word_filter.add(w.strip())
 
 while True:

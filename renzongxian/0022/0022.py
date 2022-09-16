@@ -24,7 +24,7 @@ def resize_image(image, t_weight, t_height):
         new_weight = int(weight / ds)
         new_height = int(height / ds)
         im = im.resize((new_weight, new_height))
-        print("Succeed to resize the image %s to %s*%s " % (image,  new_weight, new_height))
+        print(f"Succeed to resize the image {image} to {new_weight}*{new_height} ")
         im.save(image)
     else:
         print("The image %s doesn't need to be resized." % image)

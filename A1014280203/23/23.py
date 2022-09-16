@@ -39,14 +39,11 @@ class DataBase(object):
         connect_str = 'mysql+pymysql://{user}:{passwd}@{ip}:{port}/{database}'.format_map(self.info)
         engine = create_engine(connect_str)
         DBSession = sessionmaker(engine)
-        session = DBSession()
-        return session
+        return DBSession()
 
     def query_all_post(self):
         items = self.session.query(Post).order_by(Post.postID).all()
-        if not isinstance(items, list):
-            return [items]
-        return items
+        return items if isinstance(items, list) else [items]
 
     def add_post(self, item):
         self.session.add(item)

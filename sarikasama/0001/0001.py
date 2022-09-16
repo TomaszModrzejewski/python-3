@@ -12,6 +12,5 @@ def gene_activation_code(count, length):
 
 if __name__ == "__main__":
     res = gene_activation_code(200, 8)
-    f = open("codes","w")
-    f.write("\n".join(res))
-    f.close()
+    with open("codes","w") as f:
+        f.write("\n".join(res))

@@ -19,7 +19,7 @@ def findWord(DirPath):
             with open(filePath) as f:
                 data = f.read()
                 words = reObj.findall(data)
-                wordDict = dict()
+                wordDict = {}
                 for word in words:
                     word = word.lower()
                     if word in ['a', 'the', 'to']:
@@ -29,7 +29,7 @@ def findWord(DirPath):
                     else:
                         wordDict[word] = 1
             ansList = sorted(wordDict.items(), key=lambda t: t[1], reverse=True)
-            print('file: %s->the most word: %s' % (file, ansList[1]))
+            print(f'file: {file}->the most word: {ansList[1]}')
 
 
 if __name__ == '__main__':

@@ -16,4 +16,4 @@ for f in os.listdir(path):
     if height > 640:
         height = 640
         out = img.resize((width, height), Image.ANTIALIAS)
-    out.save('images/result/'+f)
+    out.save(f'images/result/{f}')

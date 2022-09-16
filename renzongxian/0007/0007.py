@@ -19,17 +19,16 @@ def code_lines(target_file):
     empty_lines = 0
     comment_lines = 0
 
-    file_object = open(target_file, 'r')
-    for line in file_object:
-        # Split the string
-        word_list = line.split()
-        if word_list == []:
-            empty_lines += 1
-        elif word_list[0] == '#':
-            comment_lines += 1
-        total_lines += 1
+    with open(target_file, 'r') as file_object:
+        for line in file_object:
+            # Split the string
+            word_list = line.split()
+            if word_list == []:
+                empty_lines += 1
+            elif word_list[0] == '#':
+                comment_lines += 1
+            total_lines += 1
 
-    file_object.close()
     return total_lines, empty_lines, comment_lines
 
 
@@ -47,4 +46,6 @@ if __name__ == "__main__":
                 t_lines += t
                 e_lines += e
                 c_lines += c
-        print("Total lines: %s. Empty lines: %s. Comment Lines: %s." % (t_lines, e_lines, c_lines))
+        print(
+            f"Total lines: {t_lines}. Empty lines: {e_lines}. Comment Lines: {c_lines}."
+        )

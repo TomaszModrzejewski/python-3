@@ -14,8 +14,7 @@ def find_the_link(filepath):
     with open(filepath) as f:
         text = f.read()
         bs =BeautifulSoup(text)
-        for i in bs.find_all('a'):
-            links.append(i['href'])
+        links.extend(i['href'] for i in bs.find_all('a'))
     return links
 
 if __name__ == '__main__':

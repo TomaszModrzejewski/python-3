@@ -31,7 +31,7 @@ def generate():
 	print code
 
 def main():
-	for i in range(199):
+	for _ in range(199):
 		generate()
 
 if __name__ == '__main__':

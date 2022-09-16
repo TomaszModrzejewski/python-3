@@ -23,21 +23,19 @@ class change_DPI:
                 (x, y) = im.size
                 print('origin img size:')
                 print(im.size)
-                if x > x_iphone5 or y > y_iphone5:
-                    if x > x_iphone5:
-                        x_resize = x_iphone5
-                        y_resize = int(y * (x_resize / x))
-                        f_resize = im.resize((x_resize, y_resize))
-                        f_resize.save(f)
-                        continue
+                if x > x_iphone5:
+                    x_resize = x_iphone5
+                    y_resize = int(y * (x_resize / x))
+                    f_resize = im.resize((x_resize, y_resize))
+                    f_resize.save(f)
+                    continue
+                elif y > y_iphone5:
                     if y > x_iphone:
                         y_resize = y_iphone5
                         x_resize = x * (y_resize / y)
                         f_resize = im.resize(
                             (x_resize, y_resize), Image.ANTIALIAS)
                         f_resize.save(f)
-                        continue
-
         if is_exist == False:
             print('no photo')
 

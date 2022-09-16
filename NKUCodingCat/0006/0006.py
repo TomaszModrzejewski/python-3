@@ -1,10 +1,10 @@
 #coding=utf-8
 #拿以前代码改的
 import re,sys,os
-path = os.path.split(os.path.realpath(__file__))[0]+"/"
+path = f"{os.path.split(os.path.realpath(__file__))[0]}/"
 Fliter = re.compile("[^A-Za-z-\']|((?<![A-Za-z])[-\'])|([-\'](?![A-Za-z]))")
 Divider = re.compile("\s")
-File = open(path+"list.txt").read()
+File = open(f"{path}list.txt").read()
 ex = re.split("[\r\n]",File)
 ex.append(" ")
 ex.append("")
@@ -21,7 +21,7 @@ def Stat(input):
 			Dict[j] =1
 		except:
 			raise 
-	
+
 	for i in ex:
 		j = i.lower()
 		try:

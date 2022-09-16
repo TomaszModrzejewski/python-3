@@ -3,14 +3,11 @@ import xlrd,codecs
 from lxml import etree
 
 def xls_xml(file_name):
-	data = []
-
 	excel = xlrd.open_workbook(file_name)
 	table = excel.sheet_by_name('numbers')
 	# print(table.row_values(0))
 	nrows = table.nrows
-	for i in range(nrows):
-		data.append(table.row_values(i))
+	data = [table.row_values(i) for i in range(nrows)]
 	output = codecs.open('numbers.xml','w','utf-8')
 	root = etree.Element('root')
 	numbers_xml = etree.ElementTree(root)

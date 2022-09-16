@@ -5,10 +5,7 @@ import xml.dom.minidom as md
 def get_xls_data(filename):
      book = xlrd.open_workbook(filename)
      sheet = book.sheet_by_index(0)
-     content = {}
-     for i in range(sheet.nrows):
-         content[i+1] = sheet.row_values(i)[1:]
-     return content
+     return {i+1: sheet.row_values(i)[1:] for i in range(sheet.nrows)}
 
 
 def write_to_xml(xlscontent):

@@ -32,7 +32,7 @@ def sec2str(sec):
     h = sec // 3600
     m = sec % 3600 // 60
     s = sec % 60
-    return '%s小时%s分%s秒' % (h, m, s)
+    return f'{h}小时{m}分{s}秒'
 
 
 all_time = 0  # 使用总时间（秒）

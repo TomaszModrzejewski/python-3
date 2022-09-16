@@ -10,12 +10,9 @@ def count_lines(f):
     while line != '':
         if line[0] == '#':
             note += 1
-            total += 1
         elif line == '\n':
             empty_row += 1
-            total += 1
-        else:
-            total += 1
+        total += 1
         line = f.readline()
     return total, note, empty_row
 

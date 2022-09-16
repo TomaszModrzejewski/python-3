@@ -20,7 +20,7 @@ def stat_code(dir_path):
                 all_lines = 0
                 space_lines = 0
                 exp_lines = 0
-                for line in f.readlines():
+                for line in f:
                     all_lines += 1
                     if line.strip() == '':
                         space_lines += 1

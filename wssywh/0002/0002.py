@@ -1,13 +1,13 @@
 #coding:utf-8
 """第 0002 题：将 0001 题生成的 200 个激活码（或者优惠券）保存到 MySQL 关系型数据库中。"""
 
+
 import MySQLdb
 
 list_id = []
 with open("../0001/file_id.txt",'r') as file:
     files = file.readlines()
-    for content in files:
-        list_id.append(str(content).replace('\n',''))
+    list_id.extend(str(content).replace('\n','') for content in files)
 try:
     conn = MySQLdb.connect(host='localhost',user='root',passwd='123456',port=3306)
     cur = conn.cursor()

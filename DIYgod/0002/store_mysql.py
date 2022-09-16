@@ -9,10 +9,7 @@ def store_mysql(filepath):
     # 判断表是否已经存在
     cursor.execute('show tables in ShowMeTheCode;')
     tables = cursor.fetchall()
-    findtables = False
-    for table in tables:
-        if 'code' in table:
-            findtables = True
+    findtables = any('code' in table for table in tables)
     if not findtables:
         cursor.execute('''
                 CREATE TABLE `ShowMeTheCode`.`code` (
@@ -22,7 +19,7 @@ def store_mysql(filepath):
         ''')
 
     f = open(filepath, 'rb')
-    for line in f.readlines():
+    for line in f:
         code = line.strip()
         cursor.execute("insert into ShowMeTheCode.code (code) values(%s);", [code])
 

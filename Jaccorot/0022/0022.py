@@ -32,7 +32,7 @@ def walk_dir_and_resize(path, phone_type):
         for f_name in files:
             if f_name.lower().endswith('jpg'):
                 path_dst = os.path.join(root,f_name)
-                f_new_name = phone_type + '_' + f_name
+                f_new_name = f'{phone_type}_{f_name}'
                 resize_pic(path=path_dst, new_path=f_new_name , phone_type=phone_type)
 
 

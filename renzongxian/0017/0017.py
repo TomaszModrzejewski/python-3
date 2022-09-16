@@ -56,10 +56,8 @@ def build_xml(content):
     # Create text element
     students.appendChild(doc.createTextNode(str(content)))
 
-    # Save the xml file
-    student_xml = open('student.xml', 'w')
-    student_xml.write(doc.toprettyxml())
-    student_xml.close()
+    with open('student.xml', 'w') as student_xml:
+        student_xml.write(doc.toprettyxml())
 
 if __name__ == '__main__':
     _content = open_xls()

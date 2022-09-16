@@ -12,9 +12,9 @@ import MySQLdb
 
 def creat_code(number=20):
 	result = []
-	while True is True:
+	while True:
 		tem=str(uuid.uuid1()).replace('-','')
-		if not tem in result:
+		if tem not in result:
 			result.append(tem)
 		if len(result) is number:
 			break

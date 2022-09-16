@@ -44,7 +44,7 @@ class Things(db.Model):
         import forgery_py
 
         seed()
-        for i in range(count):
+        for _ in range(count):
             u = Things(thing=forgery_py.lorem_ipsum.word())
             db.session.add(u)
             try:

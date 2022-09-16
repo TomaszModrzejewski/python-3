@@ -14,11 +14,12 @@ def getline(path):
     for x in data:
         if x == '\n':
             blank += 1
-        if x.find('#')!= -1:
-            if re.search("\'.*?#.*?\'",x) or re.search("\".*?#.*?\"",x):
-                pass
-            else:
-                comment += 1
+        if (
+            x.find('#') != -1
+            and not re.search("\'.*?#.*?\'", x)
+            and not re.search("\".*?#.*?\"", x)
+        ):
+            comment += 1
         total += 1
 
 def getfile(path):

@@ -21,11 +21,13 @@ def to_xml(data):
 def read_excel(testfile):
     book = xlrd.open_workbook(testfile)
     sheet = book.sheet_by_name(sheetname)
-    data = {}
     rows = sheet.nrows
     cols = sheet.ncols
-    for i in range(rows):
-        data[str(int(sheet.cell_value(i, 0)))] = sheet.cell_value(i, 1)
+    data = {
+        str(int(sheet.cell_value(i, 0))): sheet.cell_value(i, 1)
+        for i in range(rows)
+    }
+
     #The ensure_ascii param is very important for Chinese character, see the
     #document
     return json.dumps(data, ensure_ascii = False)

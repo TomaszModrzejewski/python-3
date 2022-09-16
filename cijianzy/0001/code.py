@@ -5,7 +5,6 @@
 
 from uuid import uuid4
 def get_key(num):
-    key_list = [str(uuid4()) for i in range(num)]
-    return key_list 
+    return [str(uuid4()) for _ in range(num)] 
 print get_key(200)
 

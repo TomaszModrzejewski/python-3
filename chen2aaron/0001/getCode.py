@@ -28,11 +28,9 @@ def writeIn(n, many, where):
     """
         写入文件 并按顺序排列
     """
-    count = 1
-    for i in generate(n, many):
+    for count, i in enumerate(generate(n, many), start=1):
         with open(where, "a") as boom:
-            boom.write(str(count).rjust(3)+"  "+i+"\n")
-        count += 1
+            boom.write(f"{str(count).rjust(3)}  {i}" + "\n")
 
 
 if __name__ == '__main__':

@@ -20,7 +20,7 @@ def stat_lines(file_name,file_type):
 	stat_result={'comment':0,'content':0,'null_line':0}
 	with open(file_name,'rt',encoding='utf-8') as f:
 		if file_name.endswith(lan_postfix[file_type]):
-			for line in f.readlines():
+			for line in f:
 				# pdb.set_trace()
 				line_next=line.lstrip()
 				# fuck a bug here in c multi comment

@@ -9,7 +9,7 @@ p = db.pipeline()
 
 def id_generator(size=4, chars=string.ascii_uppercase + string.digits + string.ascii_lowercase):
     set = []
-    for i in range(4):
+    for _ in range(4):
         a = ''.join(random.choice(chars) for _ in range(size))
         set.append(a)
     return set

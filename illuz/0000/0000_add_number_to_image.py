@@ -19,7 +19,7 @@ import sys, shutil
 # @return nothing
 def back_file(filename):
     p = filename.rfind('.')
-    shutil.copyfile(filename, filename[:p] + '_bak' + filename[p:])
+    shutil.copyfile(filename, f'{filename[:p]}_bak{filename[p:]}')
 
 
 # add number to right top corner
@@ -38,7 +38,7 @@ def add_number_to_image(im, num):
 # open image and deal font and get Draw
 # @return a ImageDraw
 def deal(f, num):
-    if (num == None):
+    if num is None:
         num = 0
     if (num > '9'):
         num = '9+'

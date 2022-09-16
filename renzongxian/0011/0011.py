@@ -23,21 +23,10 @@ jiangge
 
 
 def filter_words(words):
-    # Read filtered words from file named 'filtered_words.txt'
-    file_object = open('filtered_words.txt', 'r')
-    filtered_words = []
-    for line in file_object:
-        filtered_words.append(line.strip('\n'))
-    file_object.close()
-
-    # Check if the input words include the filtered words
-    filtered = False
-    for filtered_word in filtered_words:
-        if filtered_word in words:
-            filtered = True
-            break
-
-    if filtered is True:
+    with open('filtered_words.txt', 'r') as file_object:
+        filtered_words = [line.strip('\n') for line in file_object]
+    filtered = any(filtered_word in words for filtered_word in filtered_words)
+    if filtered:
         print('Freedom')
     else:
         print('Human Rights')

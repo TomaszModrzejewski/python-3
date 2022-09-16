@@ -4,8 +4,7 @@ import codecs
 def read_txt():
     l=[]
     with codecs.open(r'c:\python27\oneday_one\1.txt') as fp:
-        for line in fp.readlines():
-           l.append(line.strip())
+        l.extend(line.strip() for line in fp.readlines())
     return l
 
 def check(l):

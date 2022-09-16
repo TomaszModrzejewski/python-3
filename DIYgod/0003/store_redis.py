@@ -5,7 +5,7 @@ import redis
 def store_redis(filepath):
     r = redis.StrictRedis(host = 'localhost', port = 6379, db = 0)
     f = open(filepath, 'rb')
-    for line in f.readlines():
+    for line in f:
         code = line.strip()
         r.lpush('code', code)
 

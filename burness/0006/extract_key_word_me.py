@@ -13,7 +13,7 @@ def main():
                 for line in f:
                     # delete the stopwords in note
                     words=line.split()
-                    words= [w for w in words if not w in stopwords.words('english')]
+                    words = [w for w in words if w not in stopwords.words('english')]
                     result+=Counter(words)
             print('The most important word in %s is %s',(file,result.most_common(2)))
 

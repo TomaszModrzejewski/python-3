@@ -3,11 +3,10 @@ import xlwt
 with open('city.txt', 'r', encoding='utf-8') as f:
     data = f.read()
     _city = eval(data)
-    city = list()
+    city = []
     for i in range(1, 4):
         info = _city[str(i)]
-        city.append(i)
-        city.append(info)
+        city.extend((i, info))
     row = len(city)//len(_city)
 
 

@@ -21,11 +21,11 @@ def change_resolution(patterns):
     print(pictures)
     for picture in pictures:
         img = Image.open(picture)
-        width = img.size[0] if iphone_width > img.size[0] else iphone_width
-        height = img.size[1] if iphone_height > img.size[1] else iphone_height
+        width = min(iphone_width, img.size[0])
+        height = min(iphone_height, img.size[1])
         print(width,height)
         dist = img.resize((width,height),Image.ANTIALIAS)
-        dist.save("ipone6_"+picture)
+        dist.save(f"ipone6_{picture}")
 
 if __name__ == '__main__':
     change_resolution(("*.jpg","*.png"))

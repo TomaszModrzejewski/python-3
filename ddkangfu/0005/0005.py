@@ -14,7 +14,7 @@ IPHONE5_Y = 640
 
 
 def get_resized_file_name(file_name):
-    return "%s_thumb.jpg" % file_name[:-4]
+    return f"{file_name[:-4]}_thumb.jpg"
 
 
 def resize_image(file_name):

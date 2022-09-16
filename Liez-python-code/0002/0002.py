@@ -9,9 +9,7 @@ def make_number(num, length):
     a = []
     i = 0
     while i < num:
-        numstr = ''
-        for j in range(length):
-            numstr += random.choice(str)
+        numstr = ''.join(random.choice(str) for _ in range(length))
         if numstr not in a: #如果没重复
             a.append(numstr)
             i += 1

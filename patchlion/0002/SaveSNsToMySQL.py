@@ -6,7 +6,7 @@ import pymysql
 sns = []
 
 with open('../0001/sns.txt', 'rt') as f:
-    for line in f.readlines():
+    for line in f:
         sn = line.strip()
         sns.append(sn)
 

@@ -18,15 +18,15 @@ except:
 
 imgre = re.compile(r'src=\"(.*?)\"')
 results = imgre.findall(data)
-picnum =0 
+picnum =0
 for x in results:
     if '.jpg' not in x:
         continue
     img = urllib.request.urlopen(x,timeout = 3).read()
     try:
-        f = open(str(picnum)+'.jpg','wb')
+        f = open(f'{str(picnum)}.jpg', 'wb')
         f.write(img)
         picnum+=1
         f.close;
     except:
-        print('无法将图片%s写入%s' % (x, str(picnum) +'.jpg' ) )
+        print(f"无法将图片{x}写入{f'{picnum}.jpg'}")

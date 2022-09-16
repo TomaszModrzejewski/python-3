@@ -19,5 +19,5 @@ def saveToMySQL(discount_str):
 if __name__ == '__main__':
 	discount_arr = discount.produce(3)
 	for _discount in discount_arr:
-		flag = True if saveToMySQL(_discount) == 1 else False
+		flag = saveToMySQL(_discount) == 1
 		print(flag)

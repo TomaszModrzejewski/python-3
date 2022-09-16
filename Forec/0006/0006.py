@@ -7,11 +7,10 @@ def find_word(file_path):
     word_dic = {}
     word_re = re.compile(r'[\w]+')
     for x in file_list:
-        if os.path.isfile(x) and os.path.splitext(x)[1] =='.txt' :
+        if os.path.isfile(x) and os.path.splitext(x)[1] =='.txt':
             try:
-                f = open(x, 'r')
-                data = f.read()
-                f.close()
+                with open(x, 'r') as f:
+                    data = f.read()
                 words = word_re.findall(data)
                 for word in words:
                     if word not in word_dic:
@@ -19,7 +18,7 @@ def find_word(file_path):
                     else:
                         word_dic[word] += 1
             except:
-                print('Open %s Error' % x)
+                print(f'Open {x} Error')
     Ans_List = sorted(word_dic.items(), key = lambda t : t[1], reverse = True)
     for key, value in Ans_List:
         print( 'Word ', key, 'appears %d times' % value )

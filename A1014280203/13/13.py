@@ -9,7 +9,7 @@ from urllib.request import urlopen
 class DownLoadImage(object):
 
     def __init__(self):
-        self.urls = list()
+        self.urls = []
         self.url = 'http://tieba.baidu.com/p/2166231880'
         self.headers = {
             'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
@@ -31,7 +31,7 @@ class DownLoadImage(object):
             url = self.urls[i]
             print(url)
             resp = self.s.get(url)
-            filename = 'img' + str(i) + '.jpg'
+            filename = f'img{str(i)}.jpg'
             with open(filename, 'wb') as file:
                 file.write(resp.content)
 

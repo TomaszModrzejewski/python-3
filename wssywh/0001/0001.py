@@ -9,7 +9,7 @@ import uuid
 
 def get_id(num):
     list_id = []
-    for i in range(num):
+    for _ in range(num):
         id = str(uuid.uuid1()).replace('-','')
         list_id.append(id)
     return list_id

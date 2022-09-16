@@ -12,9 +12,9 @@ def thumbnail_pic(a, b =1136, c=640):
     for x in a:
         name = os.path.join('.', x)
         im = Image.open(name)
-        print('Before:'+im.format, im.size, im.mode)
+        print(f'Before:{im.format}', im.size, im.mode)
         im.thumbnail((b, c))
-        print('After:'+im.format, im.size, im.mode)
+        print(f'After:{im.format}', im.size, im.mode)
         im.save(name, 'JPEG')
 
 a = os.listdir('.') 

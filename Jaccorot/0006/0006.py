@@ -12,9 +12,10 @@ import re
 def walk_dir(path):
     file_path = []
     for root, dirs, files in os.walk(path):
-        for f in files:
-            if f.lower().endswith('txt'):
-                file_path.append(os.path.join(root, f))
+        file_path.extend(
+            os.path.join(root, f) for f in files if f.lower().endswith('txt')
+        )
+
     return file_path
 
 def find_key_word(filepath):

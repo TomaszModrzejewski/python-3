@@ -8,8 +8,7 @@
 def filtered_words(f_file):
     filtered_list = []
     with open(f_file, 'r') as f:
-        for line in f:
-            filtered_list.append(line.strip())
+        filtered_list.extend(line.strip() for line in f)
     return filtered_list
 
 
@@ -19,9 +18,7 @@ def filtered_or_not(input_word, f_file):
 
 
 def print_user_input(input_word, f_file):
-    if filtered_or_not(input_word, f_file):
-        return "Freedom"
-    return "Human Rights"
+    return "Freedom" if filtered_or_not(input_word, f_file) else "Human Rights"
 
 
 if __name__ == "__main__":

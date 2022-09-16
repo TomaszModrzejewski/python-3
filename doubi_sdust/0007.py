@@ -30,10 +30,10 @@ def mainKeywords(dirPath):
                         codelines += 1
                     else:
                         blank += 1
-                print('the nuber of totalines is : ' + str(totalines-1))
-                print('the nuber of comments is : ' + str(comments))
-                print('the nuber of codelines is : ' + str(codelines))
-                print('the nuber of blanklines is : ' + str(blank))
+                print(f'the nuber of totalines is : {str(totalines - 1)}')
+                print(f'the nuber of comments is : {str(comments)}')
+                print(f'the nuber of codelines is : {str(codelines)}')
+                print(f'the nuber of blanklines is : {str(blank)}')
                 blank, comments, codelines, totalines = 0, 0, 0, 0
 
 mainKeywords('D:\PyCharm 2017.1.3\projects')

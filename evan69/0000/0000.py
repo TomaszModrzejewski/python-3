@@ -20,4 +20,4 @@ def add_number(filename,number):
 
 filename = sys.argv[1]
 num = sys.argv[2]
-add_number(filename,int(num)).save(num + '_' + filename)
+add_number(filename,int(num)).save(f'{num}_{filename}')

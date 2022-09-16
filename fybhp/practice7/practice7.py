@@ -2,10 +2,7 @@
 import os
 
 #用字典结构表示，更为清晰。
-map = {}
-map['blank'] = 0
-map['annotation'] = 0
-map['all'] = 0
+map = {'blank': 0, 'annotation': 0, 'all': 0}
 dir = r'E://somegit/pracpro/'
 file_list = os.walk(dir)
 

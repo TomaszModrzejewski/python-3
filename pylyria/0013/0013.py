@@ -8,11 +8,11 @@ values={'wd':'python',
         'ie':'gbk'}  
 url_values=urllib.parse.urlencode(values)  
 #print(url_values)  
-  
+
 url_values=url_values.encode(encoding='UTF8')  
 full_url=urllib.request.Request(url,url_values)  
 #or ony one sentense:full_url=url+'?'+url_values  
-  
+
 try:  
     response=urllib.request.urlopen(full_url)   #open=urlopen  
 except HTTPError as e:  

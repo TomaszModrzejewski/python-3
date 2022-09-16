@@ -10,9 +10,10 @@ import os
 def walk_dir(path):
     file_path = []
     for root, dirs, files in os.walk(path):
-        for f in files:
-            if f.lower().endswith('py'):
-                file_path.append(os.path.join(root, f))
+        file_path.extend(
+            os.path.join(root, f) for f in files if f.lower().endswith('py')
+        )
+
     return file_path
 
 
@@ -39,8 +40,6 @@ def count_the_code(path):
 
             if len(line) == 0:
                 empty_line_num += 1
-
-    print u"在%s中，共有%s行代码，其中有%s空行，有%s注释"% (file_name, line_num, empty_line_num, note_num)
 
 
 if __name__ == '__main__':

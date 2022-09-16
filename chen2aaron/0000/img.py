@@ -35,7 +35,7 @@ class AddNumToPic(object):
         draw = ImageDraw.Draw(self.img)
         draw.text(position, str, fill=color, font=ttf)
         self.img.show()
-        self.img.save(str + "number" + '.png')
+        self.img.save(f"{str}number.png")
         return True
 
 if __name__ == '__main__':

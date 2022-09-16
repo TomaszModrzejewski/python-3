@@ -76,9 +76,7 @@ def identifyFileType(suffix):
     """
     if suffix == "py":
         return "#", "\"\"\"", "\"\"\""
-    elif suffix == "c" or suffix == "h" or suffix == "cpp" or suffix == "hpp":
-        return "//", "/*", "*/"
-    elif suffix == "java":
+    elif suffix in ["c", "h", "cpp", "hpp", "java"]:
         return "//", "/*", "*/"
     else:
         return "not defined"
@@ -92,11 +90,7 @@ def isInlineComment(string_line):
 
     """
     commentLen = len(inline_comment_syntax)
-    if string_line[0:commentLen] == inline_comment_syntax:
-        # print("zero")
-        return True
-    else:
-        return False
+    return string_line[:commentLen] == inline_comment_syntax
 
 
 def isMultilineComment(string_line):
@@ -109,16 +103,20 @@ def isMultilineComment(string_line):
     global multilineCommentStartFlag
     commentLen = len(str(start_comment_syntax))
     # print(multilineCommentStartFlag)
-    if(string_line[0:commentLen] == start_comment_syntax and
-       multilineCommentStartFlag == 0):
+    if (
+        string_line[:commentLen] == start_comment_syntax
+        and multilineCommentStartFlag == 0
+    ):
         multilineCommentStartFlag = 1
         # print("one")
         if(len(string_line) > commentLen and
            string_line[-commentLen:] == end_comment_syntax):
             multilineCommentStartFlag = 0
         return True
-    elif(string_line[0:commentLen] != start_comment_syntax and
-         multilineCommentStartFlag == 1):
+    elif (
+        string_line[:commentLen] != start_comment_syntax
+        and multilineCommentStartFlag == 1
+    ):
         # print("two")
         if(len(string_line) > commentLen and
            string_line[-commentLen:] == end_comment_syntax):
@@ -143,16 +141,16 @@ def countOneFile(full_file_path):
     """
     global inline_comment_syntax, start_comment_syntax, end_comment_syntax
     global multilineCommentStartFlag
-    local_result = {"No blank lines": 0,
-                    "Comment lines":  0,
-                    "Code lines": 0,
-                    "Blank lines": 0}
     file_suffix = getSuffix(full_file_path)
-    if(identifyFileType(file_suffix) != "not defined"):
+    if (identifyFileType(file_suffix) != "not defined"):
         result["Code files"] += 1
         (inline_comment_syntax,
          start_comment_syntax,
          end_comment_syntax) = identifyFileType(file_suffix)
+        local_result = {"No blank lines": 0,
+                        "Comment lines":  0,
+                        "Code lines": 0,
+                        "Blank lines": 0}
         with open(full_file_path, "r") as lines:
             for line in lines:
                 line = line.strip()
@@ -168,8 +166,8 @@ def countOneFile(full_file_path):
                 else:
                     local_result["Blank lines"] += 1
         print(full_file_path)
-        for key in local_result:
-            print(str(key) + ": " + str(local_result[key]))
+        for key, value in local_result.items():
+            print(f"{str(key)}: {str(value)}")
         result["No blank lines"] += local_result["No blank lines"]
         result["Comment lines"] += local_result["Comment lines"]
         result["Code lines"] += local_result["Code lines"]
@@ -206,14 +204,14 @@ def main():
                   "Comment lines": 0,
                   "Blank lines": 0}
 
-        print("this is the directory: " + directory)
+        print(f"this is the directory: {directory}")
         countInDirectory(directory)
 
         print()
         print("Final result in the directory")
         print(directory)
         for key in result:
-            print(str(key) + ": " + str(result[key]))
+            print(f"{str(key)}: {str(result[key])}")
 
 """
 Launch

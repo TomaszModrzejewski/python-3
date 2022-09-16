@@ -3,11 +3,8 @@ import string
 
 words = string.ascii_letters + string.digits
 
-def  get_coupon(digit):
-    conpon = ''
-    for i in range(digit):
-        conpon += random.choice(words)
-    return conpon
+def get_coupon(digit):
+    return ''.join(random.choice(words) for _ in range(digit))
 
 def two_hundred_coupons():
 #    conpons = set()

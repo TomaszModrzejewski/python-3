@@ -10,7 +10,7 @@ from string import punctuation
 from operator import itemgetter
 
 def remove_punctuation(text):
-    text = re.sub(r'[{}]+'.format(punctuation), '', text)
+    text = re.sub(f'[{punctuation}]+', '', text)
     return text.strip().lower()
 
 def split(file_name):

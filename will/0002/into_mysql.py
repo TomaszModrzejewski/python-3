@@ -8,13 +8,11 @@ import random, string, time, math, uuid, pymysql
 chars = string.ascii_letters + string.digits
 
 def gen1():
-    key = ''.join(random.sample(chars, 10))
     #key2 = ''.join(random.choice(chars) for i in range(10))
-    return key
+    return ''.join(random.sample(chars, 10))
 
 def gen2():
-    key = math.modf(time.time())[0]
-    return key
+    return math.modf(time.time())[0]
 
 def gen3():
     return uuid.uuid4()
@@ -31,7 +29,7 @@ def dbp():
 
 if __name__ == '__main__':
     db, cursor = dbp()
-    for i in range(200):
+    for _ in range(200):
         add_code = "INSERT INTO CODE(app_code) VALUES ('%s')" % gen2()
         # print(add_code)
         try:

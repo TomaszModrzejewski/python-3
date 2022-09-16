@@ -35,12 +35,13 @@ bigram_tagger = nltk.BigramTagger(brown_train, backoff=unigram_tagger)
 
 # This is our semi-CFG; Extend it according to your own needs
 #############################################################################
-cfg = {}
-cfg["NNP+NNP"] = "NNP"
-cfg["NN+NN"] = "NNI"
-cfg["NNI+NN"] = "NNI"
-cfg["JJ+JJ"] = "JJ"
-cfg["JJ+NN"] = "NNI"
+cfg = {
+    "NNP+NNP": "NNP",
+    "NN+NN": "NNI",
+    "NNI+NN": "NNI",
+    "JJ+JJ": "JJ",
+    "JJ+NN": "NNI",
+}
 #############################################################################
 
 
@@ -51,14 +52,13 @@ class NPExtractor(object):
 
     # Split the sentence into singlw words/tokens
     def tokenize_sentence(self, sentence):
-        tokens = nltk.word_tokenize(sentence)
-        return tokens
+        return nltk.word_tokenize(sentence)
 
     # Normalize brown corpus' tags ("NN", "NN-PL", "NNS" > "NN")
     def normalize_tags(self, tagged):
         n_tagged = []
         for t in tagged:
-            if t[1] == "NP-TL" or t[1] == "NP":
+            if t[1] in ["NP-TL", "NP"]:
                 n_tagged.append((t[0], "NNP"))
                 continue
             if t[1].endswith("-TL"):
@@ -79,34 +79,28 @@ class NPExtractor(object):
         merge = True
         while merge:
             merge = False
-            for x in range(0, len(tags) - 1):
+            for x in range(len(tags) - 1):
                 t1 = tags[x]
                 t2 = tags[x + 1]
-                key = "%s+%s" % (t1[1], t2[1])
-                value = cfg.get(key, '')
-                if value:
+                key = f"{t1[1]}+{t2[1]}"
+                if value := cfg.get(key, ''):
                     merge = True
                     tags.pop(x)
                     tags.pop(x)
-                    match = "%s %s" % (t1[0], t2[0])
+                    match = f"{t1[0]} {t2[0]}"
                     pos = value
                     tags.insert(x, (match, pos))
                     break
 
-        matches = []
-        for t in tags:
-            if t[1] == "NNP" or t[1] == "NNI":
-                # if t[1] == "NNP" or t[1] == "NNI" or t[1] == "NN":
-                matches.append(t[0])
-        return matches
+        return [t[0] for t in tags if t[1] in ["NNP", "NNI"]]
 
 
 # Main method, just run "python np_extractor.py"
 def main():
     path = '.'
     for file in os.listdir(path):
-        text = []
         if file.endswith('.txt'):
+            text = []
             with open(file, 'rt') as f:
                 for line in f:
                     words = line.split()
@@ -114,6 +108,6 @@ def main():
             str_text=' '.join(text)
             np_extractor = NPExtractor(str_text)
             result = np_extractor.extract()
-            print("This file is about: %s" % ", ".join(result))
+            print(f'This file is about: {", ".join(result)}')
 if __name__ == '__main__':
     main()

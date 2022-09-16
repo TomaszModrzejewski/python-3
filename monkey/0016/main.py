@@ -37,16 +37,14 @@ def writeInXLS(list):
     # 创建 表
     sheet = file.add_sheet('numbers', cell_overwrite_ok=True)
 
-    row = 0
     col = 0
 
 
-    for l in list:
+    for row, l in enumerate(list):
         for i in l:
             sheet.write(row, col, i)
             col += 1
 
-        row += 1
         col = 0
 
     file.save(fileName)

@@ -20,16 +20,14 @@ def read_txt(path):
 def save_into_excel(content_dict, excel_name):
     wb = xlwt.Workbook()
     ws = wb.add_sheet("student",  cell_overwrite_ok=True)
-    row = 0
     col = 0
 
-    for k, v in sorted(content_dict.items(),key=lambda d:d[0]):
+    for row, (k, v) in enumerate(sorted(content_dict.items(),key=lambda d:d[0])):
         ws.write(row, col, k)
         for i in v:
             col += 1
             ws.write(row, col, i)
 
-        row += 1
         col = 0
 
     wb.save(excel_name)

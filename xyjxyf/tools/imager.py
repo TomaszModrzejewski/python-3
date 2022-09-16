@@ -10,8 +10,7 @@ def open_image(image_path=None):
     if image_path is None or len(image_path) == 0:
         return None
 
-    im = Image.open(image_path)
-    return im
+    return Image.open(image_path)
 
 
 # 显示
@@ -34,28 +33,17 @@ def save(image=None, to_path=None):
 
 # 大小
 def image_size(image=None):
-    ret_size = (0, 0)
-
-    if image is None:
-        return ret_size
-
-    return image.size
+    return (0, 0) if image is None else image.size
 
 
 # 拷贝
 def image_copy(image=None):
-    if image is None:
-        return None
-
-    return image.copy()
+    return None if image is None else image.copy()
 
 
 # 裁剪
 def image_crop(image=None, box=None):
-    if image is None or box is None:
-        return None
-
-    return image.crop(box)
+    return None if image is None or box is None else image.crop(box)
 
 
 # 压缩
@@ -125,18 +113,12 @@ def image_rotate(image=None, rotate=0):
     if image is None:
         return None
 
-    if rotate == 0:
-        return image
-
-    return image.rotate(rotate)
+    return image if rotate == 0 else image.rotate(rotate)
 
 
 # 转换色彩模式, mode: 'P'虚化,'L'或者'1'黑白,'LA'怀旧
 def image_convert(image=None, mode='P'):
-    if image is None:
-        return None
-
-    return image.convert(mode)
+    return None if image is None else image.convert(mode)
 
 
 # 生成验证码图片:数字和字母
@@ -156,7 +138,7 @@ def verification_code(num=4, width=240, height=60, font_size=30):
     ty = (height - font_size) / 2
     tx = margin
     str = ""
-    for t in range(num):
+    for _ in range(num):
         char = stringer.rand_char()
         draw.text((tx, ty), char, font=font, fill=colorer.randRGB(0, 100))
         tx = tx + tw
@@ -185,5 +167,4 @@ def reset_image_size(image=None, max_width=None, max_height=None):
         new_height = max_height
         new_width = max_height * rotate
 
-    new_image = image.resize((int(new_width), int(new_height)), Image.BILINEAR)
-    return new_image
+    return image.resize((int(new_width), int(new_height)), Image.BILINEAR)

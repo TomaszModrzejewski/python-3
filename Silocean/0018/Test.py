@@ -10,10 +10,7 @@ with xlrd.open_workbook('city.xls', 'w') as f:
 
 rows = table.nrows
 cols = table.ncols
-dic = {}
-for row in range(rows):
-    dic[str(row+1)] = table.row_values(row)[1]
-
+dic = {str(row+1): table.row_values(row)[1] for row in range(rows)}
 s = json.dumps(dic, ensure_ascii=False, indent=4)
 
 content = '<?xml version="1.0" encoding="UTF-8"?>\n<root>\n<citys>\n<!--\n    城市信息\n-->\n'

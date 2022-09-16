@@ -8,7 +8,7 @@ def basecode():
 
 def codes(basecodes):
     while True:
-        yield "".join(choice(basecodes) for x in range(20))
+        yield "".join(choice(basecodes) for _ in range(20))
 
 
 def main():

@@ -11,11 +11,8 @@ forSelect = string.ascii_letters + string.digits
 
 
 def generate_code(count, length):
-    for x in range(count):
-        Re = ""
-        for y in range(length):
-            Re += random.choice(forSelect)
-        yield Re
+    for _ in range(count):
+        yield "".join(random.choice(forSelect) for _ in range(length))
 
 
 def save_code():

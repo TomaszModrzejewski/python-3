@@ -15,13 +15,11 @@ def spider(url):
     picitems = selector.xpath('//div[@class="d_post_content j_d_post_content  clearfix"]/img[@class="BDE_Image"]')
     print(len(picitems))
 
-    i = 0
-    for pic in picitems:
+    for i, pic in enumerate(picitems):
         url = pic.xpath('@src')[0]
         #print(url)
         dir = './%d.jpg'%i
         download_Image(url, dir)
-        i += 1
 
 
 # 下载图片

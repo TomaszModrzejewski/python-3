@@ -25,7 +25,7 @@ def clean_file(file_path):
     with open(file_path, 'r') as f:
         #i = 0
         file_as_list = []
-        for line in f.readlines():
+        for line in f:
             if line != "\n":
                 #print i
                 file_as_list.extend(line.strip().translate(None, string.punctuation).split().lower())

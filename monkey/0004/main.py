@@ -18,10 +18,7 @@ def countWords():
             dic[i] += 1
 
     # 将字典里面的item保存到list中
-    numlist = []
-    for k,value in dic.items():
-        numlist.append((k, value))
-
+    numlist = list(dic.items())
     # 排序
     numlist.sort(key = lambda  t:t[0])
 

@@ -17,8 +17,8 @@ result = find.findall(data)
 
 for img_url in result:
     name = img_url.split('/')[-1]
-    img_url = img_url+'.jpg'
+    img_url = f'{img_url}.jpg'
     html = requests.get(img_url,headers = header)
     im = html.content
-    with open(name+'.jpg','wb')as f:
+    with open(f'{name}.jpg', 'wb') as f:
         f.write(im)

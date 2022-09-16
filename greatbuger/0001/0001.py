@@ -31,7 +31,7 @@ class generateKeys:
         self.id_count = 0
         
     def gengrateId(self,id_count):
-        for i in range(id_count):
+        for _ in range(id_count):
             self.list.append(uuid.uuid1())
             
     def returnList(self):

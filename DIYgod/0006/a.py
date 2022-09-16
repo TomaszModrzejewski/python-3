@@ -1,18 +1,10 @@
+with open('a.txt', 'rb') as f:
+    lines = f.readlines()
 f = open('a.txt', 'rb')
-lines = f.readlines()
-for line in lines:
-    pass
 f.close()
 
-f = open('a.txt', 'rb')
-for line in f:
-    pass
-f.close()
-
-f = open('a.txt', 'rb')
-while true:
-    line = f.readline()
-    if not line:
-        break
-    pass
-f.close()
+with open('a.txt', 'rb') as f:
+    while true:
+        line = f.readline()
+        if not line:
+            break

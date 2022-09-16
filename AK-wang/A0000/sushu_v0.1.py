@@ -11,10 +11,7 @@ def prime(n):
         return n==3
     if n%5 == 0:
         return n==5
-    for p in xrange(7,int(math.sqrt(n))+1,2):    #只考虑奇数作为可能因子
-        if n%p == 0:
-            return 0
-    return 1  
+    return next((0 for p in xrange(7,int(math.sqrt(n))+1,2) if n%p == 0), 1)  
 
 if __name__ == "__main__":
     n = int(sys.argv[1])

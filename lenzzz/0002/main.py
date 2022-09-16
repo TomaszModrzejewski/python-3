@@ -5,10 +5,8 @@ def makeCode(length,number):
     code_set = set(code)
     code_map = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     limit = len(code_map)
-    while(len(code_set)<number):
-        this_code = ""
-        for i in range(length):
-            this_code += code_map[randint(0,limit-1)]
+    while (len(code_set)<number):
+        this_code = "".join(code_map[randint(0,limit-1)] for _ in range(length))
         code.append(this_code)
         code_set = set(code)
 

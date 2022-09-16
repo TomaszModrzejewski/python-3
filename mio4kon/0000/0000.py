@@ -18,11 +18,11 @@ def add_num(im, wDraw, hDraw):
 if __name__ == '__main__':
     im = Image.open(imagePath)
     w, h = im.size
-    print('Original image size: %sx%s' % (w, h))
+    print(f'Original image size: {w}x{h}')
     wDraw = int(0.8 * w)
     hDraw = int(0.01 * h)
     radioX = wDraw
     radioY = hDraw
     print('radioX:', radioX)
     print('radioY:', radioY)
-    add_num(im, wDraw, hDraw)
+    add_num(im, radioX, radioY)

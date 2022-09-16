@@ -26,10 +26,10 @@ def activation_code(id,length=10):
     id + L + 随机码
     string模块中的3个函数：string.letters，string.printable，string.printable
     '''
-    prefix = hex(int(id))[2:]+ 'L'
+    prefix = f'{hex(int(id))[2:]}L'
     length = length - len(prefix)
     chars=string.ascii_letters+string.digits
-    return prefix + ''.join([random.choice(chars) for i in range(length)])
+    return prefix + ''.join([random.choice(chars) for _ in range(length)])
 
 def get_id(code):
     ''' Hex to Dec '''

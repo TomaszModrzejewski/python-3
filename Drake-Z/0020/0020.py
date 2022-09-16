@@ -16,17 +16,15 @@ def jishu(file):
     re_timemin = re.compile(r'([\d]+)分')
     row_nums = table.nrows
     numbers = 0
-    for i in range(0, row_nums):
+    for i in range(row_nums):
         a = re_timesec.findall(table.cell(i, 3).value)
         b = re_timemin.findall(table.cell(i, 3).value)
-        if len(a)==0 : pass
-        else:
+        if len(a) != 0:
             numbers += int(a[0])
-        if len(b)==0 : pass
-        else:
+        if len(b) != 0:
             numbers += int(b[0])*60
 
-    print('您本月通话时长总时：%s 分 %s 秒' % (numbers//60, numbers%60))
+    print(f'您本月通话时长总时：{numbers // 60} 分 {numbers % 60} 秒')
 
 file = '语音通信.xls'
 jishu(file)

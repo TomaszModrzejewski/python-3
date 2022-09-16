@@ -47,7 +47,7 @@ class geturlimgs(object):
             os.makedirs(to_dir)
 
         if not to_dir.endswith('/'):
-            to_dir = to_dir + '/'
+            to_dir = f'{to_dir}/'
 
         index = 0
         for url in links:

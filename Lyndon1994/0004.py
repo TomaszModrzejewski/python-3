@@ -8,7 +8,7 @@ str = fin.read()
 reObj = re.compile('\b?(\w+)\b?')
 words = reObj.findall(str)
 
-wordDict = dict()
+wordDict = {}
 
 for word in words:
     if word.lower() in wordDict:
@@ -17,4 +17,4 @@ for word in words:
         wordDict[word] = 1
 
 for key, value in wordDict.items():
-    print('%s: %s' % (key, value))
+    print(f'{key}: {value}')

@@ -12,7 +12,7 @@ def main():
                 im.resize([1136,im.size[1]])
             if im.size[1] > 640:
                 im.resize([im.size[0],640])
-            im.save('test_'+im.filename)
+            im.save(f'test_{im.filename}')
 
 if __name__=='__main__':
     main()

@@ -11,8 +11,7 @@ def find_the_link(filepath):
     links = []
     with open(filepath) as f:
         bs =BeautifulSoup(f,'lxml')
-        for i in bs.find_all('a'):
-            links.append(i['href'])
+        links.extend(i['href'] for i in bs.find_all('a'))
     return links
 
 if __name__ == '__main__':

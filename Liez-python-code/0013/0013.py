@@ -12,8 +12,8 @@ def pic_collector(url):
     os.mkdir('pic_collection')
     os.chdir(os.path.join(os.getcwd(), 'pic_collection'))
     for i in range(len(pic_list)):
-        pic_num = str(i) + '.jpg'
+        pic_num = f'{str(i)}.jpg'
         urllib.request.urlretrieve(pic_list[i], pic_num)
-        print("success!" + pic_list[i])
+        print(f"success!{pic_list[i]}")
 
 pic_collector("http://tieba.baidu.com/p/4341640851")

@@ -7,7 +7,7 @@ import glob
 from collections import Counter, OrderedDict
 
 def mostImporantWord(filePath):
-    for file in glob.glob(filePath + '*.txt'):
+    for file in glob.glob(f'{filePath}*.txt'):
         calcTimes(file)
 
 def calcTimes(fileName):

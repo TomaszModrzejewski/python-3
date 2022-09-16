@@ -16,7 +16,7 @@ import redis
 
 def generate_key():
     key_list = []
-    for i in range(200):
+    for _ in range(200):
         uuid_key = uuid.uuid3(uuid.NAMESPACE_DNS, str(uuid.uuid1()))
         key_list.append(str(uuid_key).replace('-', ''))
     return key_list

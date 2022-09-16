@@ -13,7 +13,7 @@ def create_code(num, length):
     while True:
         uuid_id = uuid.uuid1()
         temp = str(uuid_id).replace('-', '')[:length]
-        if not temp in result:
+        if temp not in result:
             result.append(temp)
         if len(result) == num:
             break

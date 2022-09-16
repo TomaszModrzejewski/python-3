@@ -14,9 +14,7 @@ cols = table.ncols
 lists = []
 
 for row in range(rows):
-    list = []
-    for x in table.row_values(row):
-        list.append(x)
+    list = list(table.row_values(row))
     lists.append(list)
 s = json.dumps(lists,ensure_ascii=False, indent=4)
 content = '<?xml version="1.0" encoding="UTF-8"?>\n<root>\n<numbers>\n<!--\n    数字信息\n-->\n'

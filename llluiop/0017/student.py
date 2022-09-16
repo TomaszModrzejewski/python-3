@@ -9,9 +9,12 @@ def load_data(file_path):
     xls = xlrd.open_workbook(file_path)
     sheet = xls.sheet_by_index(0)
 
-    data = {}
-    for i in range(sheet.nrows):
-        data[str(sheet.row_values(i)[0])] = str(sheet.row_values(i)[1].encode("utf-8"))
+    data = {
+        str(sheet.row_values(i)[0]): str(
+            sheet.row_values(i)[1].encode("utf-8")
+        )
+        for i in range(sheet.nrows)
+    }
 
     return json.dumps(data, encoding="UTF-8", ensure_ascii=False)
 

@@ -8,8 +8,7 @@
 def f_words(f_file):
     filtered_list = []
     with open(f_file, 'r') as f:
-        for line in f:
-            filtered_list.append(line.strip())
+        filtered_list.extend(line.strip() for line in f)
     return filtered_list
 
 

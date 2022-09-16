@@ -11,9 +11,11 @@ def i18n_patterns(prefix, *args):
 
     """
     pattern_list = patterns(prefix, *args)
-    if not settings.USE_I18N:
-        return pattern_list
-    return [LocaleRegexURLResolver(pattern_list)]
+    return (
+        [LocaleRegexURLResolver(pattern_list)]
+        if settings.USE_I18N
+        else pattern_list
+    )
 
 
 # url

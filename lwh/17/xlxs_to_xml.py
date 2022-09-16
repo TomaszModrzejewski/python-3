@@ -28,7 +28,7 @@ class ExcelToXml(object):
     def get_text(self, excel_dict):
         res = '{\r\n'
         for key, val in excel_dict.items():
-            res += ' ' + str(key) + ':' + val + '\n'
+            res += f' {str(key)}:{val}' + '\n'
         res += '}\n'
         # print(res)
         return res
@@ -40,9 +40,8 @@ class ExcelToXml(object):
         # student.
         print(data)
         student.text = data
-        xml_final = ElementTree(root)
         # print(xml_final)
-        return xml_final
+        return ElementTree(root)
 
     def save_xml(self, xml_to_save):
         xml_to_save.write(

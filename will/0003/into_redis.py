@@ -4,13 +4,11 @@ import random, string, time, math, uuid, redis
 chars = string.ascii_letters + string.digits
 
 def gen1():
-    key = ''.join(random.sample(chars, 10))
     #key2 = ''.join(random.choice(chars) for i in range(10))
-    return key
+    return ''.join(random.sample(chars, 10))
 
 def gen2():
-    key = math.modf(time.time())[0]
-    return key
+    return math.modf(time.time())[0]
 
 def gen3():
     return uuid.uuid4()
@@ -19,6 +17,6 @@ if __name__ == '__main__':
     r = redis.Redis(host='localhost', port=6379, db=0)
     # r.set('name', 'will')
     # print(r.get('name'))
-    for i in range(200):
+    for _ in range(200):
         r.sadd('code', gen1())
     r.save()

@@ -11,7 +11,7 @@ def produce(count):
 	discountNumArray = []
 	for _count in range(count):
 		discountNum = []
-		for i in range(10):
+		for _ in range(10):
 			_index = randint(0,34)
 			discountNum.append(str[_index])
 		discountNumArray.append(''.join(discountNum))

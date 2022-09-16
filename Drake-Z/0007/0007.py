@@ -13,9 +13,7 @@ def count_num(a, b):
     path = os.path.join(a, b)
     f = open(path, 'r', encoding='UTF-8').readlines()
     for i in f:
-        if re.match(r'^#', i) == None:                          
-            pass
-        else:
+        if re.match(r'^#', i) != None:
             shuzi[1] += 1                                                   #获得注释行数，只匹配单行注释
     if f[-1][-1:]=='\n':                                                     #最后一行为空行时
         shuzi[2] = f.count('\n')+1                                     #获得空行行数

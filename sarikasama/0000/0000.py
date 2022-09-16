@@ -18,7 +18,7 @@ def add_number(num):
 
     out = Image.alpha_composite(im, txt)
     out.show()
-    out.save("icon_"+str(num)+".png")
+    out.save(f"icon_{str(num)}.png")
 
 if __name__ == '__main__':
     add_number(42)

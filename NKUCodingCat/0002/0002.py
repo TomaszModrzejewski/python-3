@@ -1,7 +1,7 @@
 #coding=utf-8
 import os,MySQLdb,re
-path = os.path.split(os.path.realpath(__file__))[0]+"/"
-f = open(path+"code.txt","r")
+path = f"{os.path.split(os.path.realpath(__file__))[0]}/"
+f = open(f"{path}code.txt", "r")
 A = f.read()
 db = MySQLdb.connect("127.0.0.1","root","root","0002" )
 cursor = db.cursor()

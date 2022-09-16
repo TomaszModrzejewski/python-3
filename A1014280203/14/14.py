@@ -3,7 +3,7 @@ import xlwt
 with open('student.txt', 'r', encoding='utf-8') as f:
     data = f.read()
     _student = eval(data)
-    student = list()
+    student = []
     for i in range(1, 4):
         info = _student[str(i)]
         student.append(i)

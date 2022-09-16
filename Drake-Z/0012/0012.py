@@ -10,18 +10,16 @@ import re
 
 def filter_word(a):
     sensitive = False
-    strs = '**'
     f = open('filtered_words.txt', 'r', encoding = 'utf-8').readlines()
     for i in f: 
         i = i.strip()                                                           #去除\n
-        b = re.split(r'%s' % (i), a)                                      #分解字符串
+        b = re.split(f'{i}', a)
         if len(b) > 1:
             c = i
-            sensitive = True   
-        else:
-            pass
+            sensitive = True
     if sensitive == True:
-        b = re.split(r'%s' % (c.strip()), a)
+        b = re.split(f'{c.strip()}', a)
+        strs = '**'
         print(strs.join(b))
     else:
         print(a)
